@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contemporary Japanese Design System • Refined</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Noto Sans", "ui-sans-serif", "system-ui"],
+            },
+            colors: {
+              "jp-red": "#c06464",
+              "jp-blue": "#5c8bb9",
+              "jp-green": "#6e987c",
+              "jp-purple": "#76738a",
+              "jp-yellow": "#e6ba5d",
+              "jp-orange": "#ff6b35",
+              "jp-gray": "#e0dee4",
+              "jp-dark": "#3c3c3c",
+            },
+            spacing: {
+              18: "4.5rem",
+              88: "22rem",
+            },
+            boxShadow: {
+              subtle: "0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06)",
+              tile: "0 2px 0 0 rgba(0,0,0,.12)",
+            },
+            borderRadius: {
+              soft: "14px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .word-tight {
+        word-spacing: -0.04em;
+      }
+      .section-label {
+        letter-spacing: 0.06em;
+      }
+      .btn-outline {
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 9999px;
+        display: inline-block;
+      }
+      .grid-pattern {
+        background-image: linear-gradient(45deg, #f8f9fa 25%, transparent 25%),
+          linear-gradient(-45deg, #f8f9fa 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #f8f9fa 75%),
+          linear-gradient(-45deg, transparent 75%, #f8f9fa 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: all 0.5s var(--ease);
+      }
+      .fade-in.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      .arrow-link::after {
+        content: "→";
+        margin-left: 0.5em;
+        transition: transform 0.2s var(--ease);
+      }
+      .arrow-link:hover::after {
+        transform: translateX(3px);
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .ticker-track {
+        width: max-content;
+        animation: scroll 30s linear infinite;
+      }
+      .ticker:hover .ticker-track {
+        animation-play-state: paused;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .fade-in {
+          transition: none;
+        }
+        .ticker-track {
+          animation: none;
+        }
+      }
+      .focus-ring:focus-visible {
+        outline: 3px solid rgba(92, 139, 185, 0.35);
+        outline-offset: 2px;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans text-jp-dark">
+    <a
+      href="#hero"
+      class="sr-only focus:not-sr-only focus-ring fixed top-2 left-2 bg-white px-3 py-2 rounded shadow-subtle z-50"
+      >Skip to content</a
+    >
+    <!-- Utility bar -->
+    <div
+      class="bg-blue-50/70 backdrop-blur supports-[backdrop-filter]:bg-white/75 border-b border-jp-gray/60"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3 text-[13px]"
+      >
+        <div class="flex items-center gap-2">
+          <span class="dot bg-jp-blue"></span>
+          <span class="uppercase tracking-widest text-jp-blue font-semibold"
+            >Info</span
+          >
+          <span class="hidden sm:inline word-tight"
+            >Service hours 9:00 to 18:00</span
+          >
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <button
+            id="a-"
+            class="px-2 py-1 rounded btn-outline hover:bg-gray-50"
+          >
+            A−
+          </button>
+          <button id="a0" class="px-2 py-1 rounded bg-white shadow-sm">
+            A
+          </button>
+          <button
+            id="a+"
+            class="px-2 py-1 rounded btn-outline hover:bg-gray-50"
+          >
+            A＋
+          </button>
+          <a
+            href="#"
+            class="hidden sm:inline px-2 py-1 rounded bg-jp-blue text-white hover:bg-blue-600"
+            >Emergency</a
+          >
+          <a href="#" class="px-2 py-1 rounded btn-outline">Accessibility</a>
+          <button
+            id="themeToggle"
+            class="px-2 py-1 rounded btn-outline"
+            aria-pressed="false"
+          >
+            Light
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="bg-white sticky top-0 z-40 border-b transition-shadow"
+      id="siteHeader"
+    >
+      <div class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full bg-jp-red flex items-center justify-center shadow-md"
+          >
+            <div class="w-6 h-6 bg-white rounded-sm"></div>
+          </div>
+          <div>
+            <p
+              class="text-xs uppercase tracking-widest text-gray-500 font-medium"
+            >
+              Contemporary
+            </p>
+            <h1 class="text-xl font-bold leading-tight">Japanese Design Lab</h1>
+          </div>
+        </div>
+
+        <form class="relative ml-auto hidden md:block w-88" role="search">
+          <input
+            aria-label="Search"
+            class="w-full rounded-full border pl-10 pr-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-jp-blue/40"
+            placeholder="Search keywords"
+          />
+          <svg
+            class="w-5 h-5 absolute left-3 top-2.5 text-gray-400"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l5 5L20.49 19l-5-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z"
+            />
+          </svg>
+        </form>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="border-t">
+        <div class="max-w-7xl mx-auto px-4 overflow-x-auto">
+          <ul
+            class="flex gap-1 py-2 text-[14px] items-center"
+            role="menubar"
+            aria-label="Primary"
+          >
+            <li>
+              <a
+                class="px-4 py-2 rounded hover:bg-jp-blue/10 font-medium focus-ring"
+                href="#hero"
+                role="menuitem"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                class="px-4 py-2 rounded hover:bg-jp-blue/10 font-medium focus-ring"
+                href="#services"
+                role="menuitem"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                class="px-4 py-2 rounded hover:bg-jp-blue/10 font-medium focus-ring"
+                href="#products"
+                role="menuitem"
+                >Products</a
+              >
+            </li>
+            <li>
+              <a
+                class="px-4 py-2 rounded hover:bg-jp-blue/10 font-medium focus-ring"
+                href="#guides"
+                role="menuitem"
+                >Resources</a
+              >
+            </li>
+            <li>
+              <a
+                class="px-4 py-2 rounded hover:bg-jp-blue/10 font-medium focus-ring"
+                href="#about"
+                role="menuitem"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                class="px-4 py-2 rounded hover:bg-jp-blue/10 font-medium focus-ring"
+                href="#contact"
+                role="menuitem"
+                >Contact</a
+              >
+            </li>
+            <li class="ml-auto">
+              <a
+                class="px-4 py-2 bg-jp-red text-white rounded hover:bg-red-600 font-medium focus-ring"
+                href="#reserve"
+                >Reserve Session</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8"
+    >
+      <div class="md:col-span-2 fade-in">
+        <div
+          class="rounded-2xl overflow-hidden bg-gradient-to-br from-jp-blue/5 to-white shadow-sm border border-jp-gray/60"
+        >
+          <div
+            class="p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6"
+          >
+            <div class="flex-1">
+              <p
+                class="section-label text-xs uppercase text-jp-blue font-semibold tracking-wider mb-2"
+              >
+                Featured Project
+              </p>
+              <h2 class="text-3xl font-bold leading-tight mb-4">
+                Interactive Design Studio
+              </h2>
+              <p class="text-gray-700 mb-6 leading-relaxed max-w-2xl">
+                Explore contemporary Japanese design principles through a
+                digital platform. Clean layouts, functional navigation, and
+                information-dense interfaces that prioritize usability.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <a
+                  href="#reserve"
+                  class="px-6 py-3 bg-jp-blue text-white rounded-full hover:bg-blue-600 font-medium focus-ring"
+                  >Start Session</a
+                >
+                <a
+                  href="#guides"
+                  class="px-6 py-3 rounded-full btn-outline hover:bg-gray-50 font-medium focus-ring"
+                  >View Guidelines</a
+                >
+              </div>
+            </div>
+            <div class="w-full sm:w-64">
+              <div
+                class="bg-white rounded-lg p-4 shadow-sm border border-jp-gray/60"
+              >
+                <p class="font-semibold mb-3">Operating Hours</p>
+                <dl class="text-sm space-y-2">
+                  <div class="flex justify-between">
+                    <dt>Monday - Friday</dt>
+                    <dd>9:00 - 18:00</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt>Saturday</dt>
+                    <dd>10:00 - 16:00</dd>
+                  </div>
+                  <div class="flex justify-between">
+                    <dt>Sunday</dt>
+                    <dd>Closed</dd>
+                  </div>
+                </dl>
+                <a
+                  href="#access"
+                  class="inline-block mt-3 text-jp-blue text-sm arrow-link"
+                  >Access Information</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Access Sidebar -->
+      <aside
+        class="grid grid-cols-2 md:grid-cols-1 gap-4"
+        aria-label="Quick access"
+      >
+        <a
+          class="group rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition-all border border-jp-gray/60 focus-ring"
+          href="#services"
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <div
+              class="w-12 h-12 rounded bg-jp-blue/10 flex items-center justify-center text-jp-blue"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M4 5h16v14H4zM7 8h10v2H7zm0 4h10v2H7z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold">Services</p>
+              <p class="text-xs text-gray-600">Design consulting</p>
+            </div>
+          </div>
+        </a>
+        <a
+          class="group rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition-all border border-jp-gray/60 focus-ring"
+          href="#products"
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <div
+              class="w-12 h-12 rounded bg-jp-red/10 flex items-center justify-center text-jp-red"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 2h12v2H6zm12 4H6l-2 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10zM8 12h8v2H8z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold">Products</p>
+              <p class="text-xs text-gray-600">Design systems</p>
+            </div>
+          </div>
+        </a>
+        <a
+          class="group rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition-all border border-jp-gray/60 focus-ring"
+          href="#guides"
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <div
+              class="w-12 h-12 rounded bg-jp-green/10 flex items-center justify-center text-jp-green"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M3 4h18v2H3zm2 4h14v12H5zM8 10h8v2H8z" />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold">Resources</p>
+              <p class="text-xs text-gray-600">Guidelines & docs</p>
+            </div>
+          </div>
+        </a>
+        <a
+          class="group rounded-xl p-4 bg-white shadow-sm hover:shadow-md transition-all border border-jp-gray/60 focus-ring"
+          href="#support"
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <div
+              class="w-12 h-12 rounded bg-jp-purple/10 flex items-center justify-center text-jp-purple"
+            >
+              <svg
+                class="w-6 h-6"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 17h-2v-2h2Zm2.07-7.75l-.9.92A3.5 3.5 0 0 0 13 15h-2v-.5a5 5 0 0 1 1.46-3.54l1.24-1.26a1.5 1.5 0 1 0-2.12-2.12L10 8.46 8.59 7.05 10.05 5.6a3.5 3.5 0 1 1 5.02 4.65Z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold">Support</p>
+              <p class="text-xs text-gray-600">Help & FAQ</p>
+            </div>
+          </div>
+        </a>
+      </aside>
+    </section>
+
+    <!-- News Ticker -->
+    <section class="bg-jp-yellow/20 border-y border-jp-gray">
+      <div
+        class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 text-sm ticker"
+      >
+        <span class="px-3 py-1 rounded bg-jp-yellow text-jp-dark font-semibold"
+          >Notice</span
+        >
+        <div class="relative flex-1 overflow-hidden">
+          <div class="flex ticker-track">
+            <p class="mr-8 whitespace-nowrap">
+              <a class="hover:underline" href="#"
+                >Scheduled maintenance Sept 12 at 01:00</a
+              >
+            </p>
+            <p class="mr-8 whitespace-nowrap">
+              <a class="hover:underline" href="#"
+                >New booking slots available for October</a
+              >
+            </p>
+            <p class="mr-8 whitespace-nowrap">
+              <a class="hover:underline" href="#"
+                >Updated accessibility guidelines published</a
+              >
+            </p>
+            <!-- duplicate for seamless loop -->
+            <p class="mr-8 whitespace-nowrap">
+              <a class="hover:underline" href="#"
+                >Scheduled maintenance Sept 12 at 01:00</a
+              >
+            </p>
+            <p class="mr-8 whitespace-nowrap">
+              <a class="hover:underline" href="#"
+                >New booking slots available for October</a
+              >
+            </p>
+            <p class="mr-8 whitespace-nowrap">
+              <a class="hover:underline" href="#"
+                >Updated accessibility guidelines published</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="max-w-7xl mx-auto px-4 py-16">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <p
+            class="section-label text-xs uppercase text-jp-blue font-semibold tracking-wider mb-2"
+          >
+            Services
+          </p>
+          <h3 class="text-2xl font-bold">Design Solutions</h3>
+        </div>
+        <div
+          class="flex gap-2 text-sm"
+          role="tablist"
+          aria-label="Service categories"
+        >
+          <button
+            class="px-4 py-2 rounded-full btn-outline tab-btn active focus-ring"
+            data-tab="consulting"
+            role="tab"
+            aria-selected="true"
+          >
+            Consulting
+          </button>
+          <button
+            class="px-4 py-2 rounded-full btn-outline tab-btn focus-ring"
+            data-tab="development"
+            role="tab"
+            aria-selected="false"
+          >
+            Development
+          </button>
+          <button
+            class="px-4 py-2 rounded-full btn-outline tab-btn focus-ring"
+            data-tab="research"
+            role="tab"
+            aria-selected="false"
+          >
+            Research
+          </button>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="md:col-span-2 bg-white rounded-xl p-6 shadow-sm border border-jp-gray/60"
+        >
+          <div class="tab-content" id="consulting" role="tabpanel">
+            <ul class="divide-y divide-gray-100">
+              <li class="py-4 flex items-start gap-4">
+                <span
+                  class="inline-flex items-center px-3 py-1 text-xs rounded-full bg-jp-blue/10 text-jp-blue font-medium"
+                  >Strategy</span
+                >
+                <div class="flex-1">
+                  <p class="font-semibold mb-1">Design System Architecture</p>
+                  <p class="text-sm text-gray-600">
+                    Comprehensive design system planning and implementation
+                    strategies
+                  </p>
+                </div>
+                <a href="#" class="text-jp-blue text-sm arrow-link">Details</a>
+              </li>
+              <li class="py-4 flex items-start gap-4">
+                <span
+                  class="inline-flex items-center px-3 py-1 text-xs rounded-full bg-jp-red/10 text-jp-red font-medium"
+                  >Workshop</span
+                >
+                <div class="flex-1">
+                  <p class="font-semibold mb-1">Team Training Sessions</p>
+                  <p class="text-sm text-gray-600">
+                    Hands-on workshops for design and development teams
+                  </p>
+                </div>
+                <a href="#" class="text-jp-blue text-sm arrow-link">Register</a>
+              </li>
+              <li class="py-4 flex items-start gap-4">
+                <span
+                  class="inline-flex items-center px-3 py-1 text-xs rounded-full bg-jp-yellow/20 text-jp-dark font-medium"
+                  >Review</span
+                >
+                <div class="flex-1">
+                  <p class="font-semibold mb-1">Design System Audit</p>
+                  <p class="text-sm text-gray-600">
+                    Comprehensive review of existing design implementations
+                  </p>
+                </div>
+                <a href="#" class="text-jp-blue text-sm arrow-link">Schedule</a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content hidden" id="development" role="tabpanel">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <article class="rounded-lg border border-jp-gray/60 p-4">
+                <p class="text-xs text-gray-500">Components</p>
+                <h4 class="font-semibold">UI Library Build</h4>
+                <p class="text-sm text-gray-600">
+                  Production-ready Tailwind components and tokens
+                </p>
+              </article>
+              <article class="rounded-lg border border-jp-gray/60 p-4">
+                <p class="text-xs text-gray-500">Workflow</p>
+                <h4 class="font-semibold">Design Tokens</h4>
+                <p class="text-sm text-gray-600">
+                  Cross-platform token pipeline and docs
+                </p>
+              </article>
+            </div>
+          </div>
+          <div class="tab-content hidden" id="research" role="tabpanel">
+            <ul class="space-y-3">
+              <li class="rounded-lg border border-jp-gray/60 p-4">
+                <p class="font-semibold">User Research Sprint</p>
+                <p class="text-sm text-gray-600">
+                  5-day research plan with synthesis
+                </p>
+              </li>
+              <li class="rounded-lg border border-jp-gray/60 p-4">
+                <p class="font-semibold">Benchmark Study</p>
+                <p class="text-sm text-gray-600">
+                  Comparative analysis across JP public portals
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <aside
+          class="bg-white rounded-xl p-6 shadow-sm border border-jp-gray/60"
+          aria-label="Side resources"
+        >
+          <p class="font-semibold mb-4">Quick Downloads</p>
+          <ul class="space-y-3 text-sm">
+            <li>
+              <a
+                class="flex items-center gap-2 hover:underline focus-ring"
+                href="#"
+                ><span class="dot bg-jp-blue"></span>Design Guidelines PDF</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex items-center gap-2 hover:underline focus-ring"
+                href="#"
+                ><span class="dot bg-jp-green"></span>Component Library</a
+              >
+            </li>
+            <li>
+              <a
+                class="flex items-center gap-2 hover:underline focus-ring"
+                href="#"
+                ><span class="dot bg-jp-yellow"></span>Color Specifications</a
+              >
+            </li>
+          </ul>
+          <hr class="my-4" />
+          <p class="font-semibold mb-2">Useful Links</p>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a class="hover:underline focus-ring" href="#">Client Portal</a>
+            </li>
+            <li><a class="hover:underline focus-ring" href="#">FAQ</a></li>
+            <li>
+              <a class="hover:underline focus-ring" href="#"
+                >Accessibility Standards</a
+              >
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Reserve Section -->
+    <section id="reserve" class="bg-gradient-to-b from-white to-jp-blue/5">
+      <div class="max-w-7xl mx-auto px-4 py-16">
+        <div
+          class="bg-white rounded-2xl p-8 shadow-sm max-w-4xl mx-auto border border-jp-gray/60"
+        >
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <p
+                class="section-label text-xs uppercase text-jp-blue font-semibold tracking-wider mb-2"
+              >
+                Reservation
+              </p>
+              <h4 class="text-2xl font-bold mb-4">Schedule a Session</h4>
+              <p class="text-gray-600 mb-6">
+                Book a consultation session with our design experts. Select your
+                preferred date, time, and session type.
+              </p>
+              <img
+                alt="Design consultation"
+                class="rounded-xl"
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop&auto=format"
+              />
+            </div>
+            <form class="space-y-4" id="reserveForm">
+              <div class="grid sm:grid-cols-3 gap-3">
+                <label class="text-sm"
+                  >Date<input
+                    type="date"
+                    class="mt-1 w-full border rounded px-3 py-2"
+                    required
+                /></label>
+                <label class="text-sm"
+                  >Time<select
+                    class="mt-1 w-full border rounded px-3 py-2"
+                    required
+                  >
+                    <option>10:00</option>
+                    <option>14:00</option>
+                    <option>16:00</option>
+                  </select></label
+                >
+                <label class="text-sm"
+                  >Duration<select
+                    class="mt-1 w-full border rounded px-3 py-2"
+                    required
+                  >
+                    <option>1 hour</option>
+                    <option>2 hours</option>
+                    <option>Half day</option>
+                  </select></label
+                >
+              </div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <label class="text-sm"
+                  >Name<input
+                    placeholder="Your name"
+                    class="mt-1 w-full border rounded px-3 py-2"
+                    required
+                /></label>
+                <label class="text-sm"
+                  >Email<input
+                    type="email"
+                    placeholder="your@email.com"
+                    class="mt-1 w-full border rounded px-3 py-2"
+                    required
+                /></label>
+              </div>
+              <label class="text-sm"
+                >Session Type<select
+                  class="mt-1 w-full border rounded px-3 py-2"
+                >
+                  <option>Design System Consultation</option>
+                  <option>UI/UX Review</option>
+                  <option>Team Workshop</option>
+                  <option>Technical Implementation</option>
+                </select></label
+              >
+              <label class="flex items-center gap-2 text-sm"
+                ><input id="agree" type="checkbox" required /> I agree to the
+                terms and conditions</label
+              >
+              <div class="flex gap-3">
+                <button
+                  type="button"
+                  id="checkBtn"
+                  class="px-6 py-3 bg-jp-red text-white rounded-full hover:bg-red-600 font-medium focus-ring"
+                >
+                  Check Availability
+                </button>
+                <button
+                  type="submit"
+                  class="px-6 py-3 bg-jp-blue text-white rounded-full hover:bg-blue-600 font-medium focus-ring"
+                >
+                  Confirm Booking
+                </button>
+              </div>
+              <p id="reserveMsg" class="text-sm text-jp-green hidden">
+                Slot available
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div
+                class="w-10 h-10 rounded-full bg-jp-red flex items-center justify-center"
+              >
+                <div class="w-6 h-6 bg-white rounded-sm"></div>
+              </div>
+              <span class="text-xl font-bold">Japanese Design Lab</span>
+            </div>
+            <p class="text-gray-400 mb-6">
+              Contemporary design solutions rooted in Japanese principles of
+              simplicity, function, and harmony.
+            </p>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-4">Services</h5>
+            <ul class="space-y-3 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Design Systems</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >UI/UX Consulting</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Team Training</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Design Audits</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-4">Resources</h5>
+            <ul class="space-y-3 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Guidelines</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Downloads</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Community</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-4">Contact</h5>
+            <ul class="space-y-3 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Support Center</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Book Session</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Partnership</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Careers</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400">
+            © 2024 Japanese Design Lab. All rights reserved.
+          </p>
+          <div class="flex gap-2 mt-4 md:mt-0">
+            <span
+              class="bg-jp-blue/20 text-white/90 px-3 py-1 rounded-full text-sm font-medium border border-white/10"
+              >Secure</span
+            >
+            <span
+              class="bg-jp-green/20 text-white/90 px-3 py-1 rounded-full text-sm font-medium border border-white/10"
+              >Certified</span
+            >
+            <span
+              class="bg-jp-yellow/20 text-white px-3 py-1 rounded-full text-sm font-medium border border-white/10 text-jp-dark"
+              >Premium</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button
+      id="toTop"
+      class="fixed bottom-4 right-4 rounded-full bg-jp-blue text-white shadow-subtle px-3 py-2 text-sm hidden focus-ring"
+    >
+      Top
+    </button>
+
+    <script>
+      // Text size controls
+      const root = document.documentElement;
+      const body = document.body;
+      document.getElementById("a-").addEventListener("click", () => {
+        body.style.fontSize = "14px";
+      });
+      document.getElementById("a0").addEventListener("click", () => {
+        body.style.fontSize = "";
+      });
+      document.getElementById("a+").addEventListener("click", () => {
+        body.style.fontSize = "17px";
+      });
+
+      // Theme toggle (light only visual label)
+      const themeBtn = document.getElementById("themeToggle");
+      themeBtn.addEventListener("click", () => {
+        const isLight = themeBtn.textContent.trim() === "Light";
+        themeBtn.textContent = isLight ? "Comfort" : "Light";
+      });
+
+      // Tabs
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabButtons.forEach((b) => {
+            b.classList.remove("bg-jp-blue", "text-white");
+            b.setAttribute("aria-selected", "false");
+          });
+          tabContents.forEach((c) => c.classList.add("hidden"));
+          btn.classList.add("bg-jp-blue", "text-white");
+          btn.setAttribute("aria-selected", "true");
+          const target = document.getElementById(btn.dataset.tab);
+          if (target) target.classList.remove("hidden");
+        });
+      });
+      if (tabButtons.length) tabButtons[0].click();
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href");
+          if (id && id.length > 1) {
+            const target = document.querySelector(id);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        });
+      });
+
+      // Reserve form interactions
+      const form = document.getElementById("reserveForm");
+      const msg = document.getElementById("reserveMsg");
+      document.getElementById("checkBtn").addEventListener("click", () => {
+        msg.classList.remove("hidden");
+        msg.textContent = "Slot available";
+      });
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Reservation submitted. We will contact you soon.");
+      });
+
+      // Header shadow on scroll + back to top
+      const header = document.getElementById("siteHeader");
+      const toTop = document.getElementById("toTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 8) {
+          header.classList.add("shadow-md");
+        } else {
+          header.classList.remove("shadow-md");
+        }
+        if (window.scrollY > 300) {
+          toTop.classList.remove("hidden");
+        } else {
+          toTop.classList.add("hidden");
+        }
+      });
+      toTop.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      );
+
+      // Reveal on view
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("is-visible");
+          });
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll(".fade-in").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
