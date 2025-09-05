@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js y-root">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,1588 +10,1477 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Noto Sans JP", "Noto Sans", "ui-sans-serif", "system-ui"],
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Noto Sans JP", "Noto Sans", "ui-sans-serif", "system-ui"],
+                    },
+                    colors: {
+                        // Palette Yugen (unique)
+                        yBlack: "#333842",
+                        yInk: "#222426",
+                        yGray: "#e6e7eb",
+                        yLine: "#d8dbe2",
+                        yBg: "#fafbfc",
+                        yPrimary: "#2560f0",
+                        yAccent: "#e70012",
+                        yGreen: "#0c8e62",
+                        yGold: "#caa65a",
+                        yCyan: "#14b8a6",
+                        // Nuances inspirées JP
+                        yBlue: "#5c8bb9",
+                        yPurple: "#76738a",
+                        yYellow: "#e6ba5d",
+                        yOrange: "#ff6b35",
+                    },
+                    spacing: {
+                        18: "4.5rem",
+                        88: "22rem",
+                    },
+                    boxShadow: {
+                        subtle: "0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06)",
+                        y1: "2px 2px 0 #333842",
+                        y2: "0 8px 24px rgba(0,0,0,.08)",
+                        y3: "0 10px 30px rgba(0,0,0,.12)",
+                    },
+                    borderRadius: {
+                        soft: "14px",
+                    },
+                },
             },
-            colors: {
-              // Palette Yugen (unique)
-              yBlack: "#333842",
-              yInk: "#222426",
-              yGray: "#e6e7eb",
-              yLine: "#d8dbe2",
-              yBg: "#fafbfc",
-              yPrimary: "#2560f0",
-              yAccent: "#e70012",
-              yGreen: "#0c8e62",
-              yGold: "#caa65a",
-              yCyan: "#14b8a6",
-              // Nuances inspirées JP
-              yBlue: "#5c8bb9",
-              yPurple: "#76738a",
-              yYellow: "#e6ba5d",
-              yOrange: "#ff6b35",
-            },
-            spacing: {
-              18: "4.5rem",
-              88: "22rem",
-            },
-            boxShadow: {
-              subtle: "0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06)",
-              y1: "2px 2px 0 #333842",
-              y2: "0 8px 24px rgba(0,0,0,.08)",
-              y3: "0 10px 30px rgba(0,0,0,.12)",
-            },
-            borderRadius: {
-              soft: "14px",
-            },
-          },
-        },
-      };
+        };
     </script>
     <style>
-      :root {
-        --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-      /* Helpers */
-      .word-tight {
-        word-spacing: -0.04em;
-      }
-      .section-label {
-        letter-spacing: 0.06em;
-      }
-      .btn-outline {
-        box-shadow: inset 0 0 0 2px var(--y-line, #d8dbe2);
-      }
-      .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 9999px;
-        display: inline-block;
-      }
-      .fade-in {
-        opacity: 0;
-        transform: translateY(12px);
-        transition: all 0.5s var(--ease);
-      }
-      .fade-in.is-visible {
-        opacity: 1;
-        transform: none;
-      }
-      .arrow-link::after {
-        content: "→";
-        margin-left: 0.5em;
-        transition: transform 0.2s var(--ease);
-      }
-      .arrow-link:hover::after {
-        transform: translateX(3px);
-      }
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
+        :root {
+            --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        100% {
-          transform: translateX(-50%);
+
+        /* Helpers */
+        .word-tight {
+            word-spacing: -0.04em;
         }
-      }
-      .ticker-track {
-        width: max-content;
-        animation: scroll 30s linear infinite;
-      }
-      .ticker:hover .ticker-track {
-        animation-play-state: paused;
-      }
-      @media (prefers-reduced-motion: reduce) {
+
+        .section-label {
+            letter-spacing: 0.06em;
+        }
+
+        .btn-outline {
+            box-shadow: inset 0 0 0 2px var(--y-line, #d8dbe2);
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 9999px;
+            display: inline-block;
+        }
+
         .fade-in {
-          transition: none;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all 0.5s var(--ease);
         }
+
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .arrow-link::after {
+            content: "→";
+            margin-left: 0.5em;
+            transition: transform 0.2s var(--ease);
+        }
+
+        .arrow-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
         .ticker-track {
-          animation: none;
+            width: max-content;
+            animation: scroll 30s linear infinite;
         }
-      }
-      .focus-ring:focus-visible {
-        outline: 3px solid rgba(92, 139, 185, 0.35);
-        outline-offset: 2px;
-        border-radius: 12px;
-      }
 
-      /* Grille et textures */
-      .y-grid {
-        background: linear-gradient(
-              90deg,
-              rgba(0, 0, 0, 0.04) 1px,
-              transparent 1px
-            )
-            0 0/40px 40px,
-          linear-gradient(180deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px) 0 0/40px
-            40px,
-          linear-gradient(0deg, #fff, #fff);
-      }
-      .y-seigaiha {
-        --c: #f1f5f9;
-        background: radial-gradient(
-              circle at 10px 15px,
-              var(--c) 12px,
-              transparent 13px
-            )
-            0 0/20px 20px,
-          radial-gradient(circle at 0 5px, var(--c) 12px, transparent 13px) 10px
-            10px/20px 20px;
-      }
+        .ticker:hover .ticker-track {
+            animation-play-state: paused;
+        }
 
-      /* Header */
-      .y-header-blur {
-        backdrop-filter: saturate(1.2) blur(6px);
-      }
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in {
+                transition: none;
+            }
 
-      /* Titres décoratifs */
-      .y-hgroup {
-        position: relative;
-        padding-left: 1.1rem;
-      }
-      .y-hgroup::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.25rem;
-        bottom: 0.25rem;
-        width: 4px;
-        border-radius: 4px;
-        background: linear-gradient(180deg, #e70012, #c91422);
-      }
-      .y-titleDeco1,
-      .y-titleDeco2 {
-        position: relative;
-        padding-left: 0.9rem;
-      }
-      .y-titleDeco1::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.35em;
-        width: 8px;
-        height: 8px;
-        background: #333842;
-        border-radius: 2px;
-      }
-      .y-titleDeco2::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.35em;
-        width: 8px;
-        height: 8px;
-        background: #e70012;
-        border-radius: 2px;
-      }
+            .ticker-track {
+                animation: none;
+            }
+        }
 
-      /* Icônes flèches */
-      .y-arrow::after,
-      .y-miniArrow::after,
-      .y-blockArrow::after {
-        content: "";
-        display: inline-block;
-        background: currentColor;
-        mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path d="M8 5l8 7-8 7" fill="currentColor"/></svg>')
-          no-repeat center / contain;
-      }
-      .y-arrow::after {
-        width: 0.6em;
-        height: 0.6em;
-        margin-left: 0.35em;
-        transform: translateY(1px);
-      }
-      .y-miniArrow::after {
-        width: 0.55em;
-        height: 0.55em;
-        margin-left: 0.35em;
-        transform: translateY(1px);
-      }
-      .y-blockArrow::after {
-        width: 10px;
-        height: 10px;
-        margin-left: 0.5rem;
-      }
+        .focus-ring:focus-visible {
+            outline: 3px solid rgba(92, 139, 185, 0.35);
+            outline-offset: 2px;
+            border-radius: 12px;
+        }
 
-      /* Boutons */
-      .y-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 500;
-        border-radius: 9999px;
-        padding: 0.65rem 1.1rem;
-        transition: transform 0.12s var(--ease), box-shadow 0.12s var(--ease),
-          background 0.12s var(--ease);
-      }
-      .y-btn:focus-visible {
-        outline: 2px solid rgba(37, 96, 240, 0.4);
-        outline-offset: 2px;
-        border-radius: 9999px;
-      }
-      .y-btn-primary {
-        background: #2560f0;
-        color: #fff;
-      }
-      .y-btn-primary:hover {
-        background: #1f52cc;
-        transform: translateY(-1px);
-      }
-      .y-btn-accent {
-        background: #e70012;
-        color: #fff;
-      }
-      .y-btn-accent:hover {
-        background: #c91422;
-        transform: translateY(-1px);
-      }
-      .y-btn-line {
-        background: #fff;
-        box-shadow: inset 0 0 0 2px #6b7280;
-        color: #333842;
-      }
-      .y-btn-line:hover {
-        background: #6b7280;
-        color: #fff;
-        transform: translateY(-1px);
-      }
-      .y-btn-ghost {
-        background: transparent;
-        box-shadow: inset 0 0 0 2px #d8dbe2;
-        color: #333842;
-      }
-      .y-btn-ghost:hover {
-        background: #f6f7f9;
-      }
+        /* Grille et textures */
+        .y-grid {
+            background: linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.04) 1px,
+                    transparent 1px) 0 0/40px 40px,
+                linear-gradient(180deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px) 0 0/40px 40px,
+                linear-gradient(0deg, #fff, #fff);
+        }
 
-      /* Chips, kbd */
-      .y-chip {
-        border: 2px solid #6b7280;
-        border-radius: 9999px;
-        padding: 0.25rem 0.6rem;
-        font-weight: 500;
-        background: #fff;
-      }
-      .y-kbd {
-        border: 2px solid #6b7280;
-        border-radius: 6px;
-        padding: 0.1rem 0.35rem;
-        background: #fff;
-        font-weight: 500;
-        font-size: 0.8em;
-      }
+        .y-seigaiha {
+            --c: #f1f5f9;
+            background: radial-gradient(circle at 10px 15px,
+                    var(--c) 12px,
+                    transparent 13px) 0 0/20px 20px,
+                radial-gradient(circle at 0 5px, var(--c) 12px, transparent 13px) 10px 10px/20px 20px;
+        }
 
-      /* Cartes et notices */
-      .y-notice {
-        border: 2px solid #6b7280;
-        border-radius: 12px;
-        background: #fff;
-      }
-      .y-card {
-        border: 2px solid #6b7280;
-        border-radius: 14px;
-        background: #fff;
-      }
+        /* Header */
+        .y-header-blur {
+            backdrop-filter: saturate(1.2) blur(6px);
+        }
 
-      /* Map placeholder */
-      .y-map {
-        background: linear-gradient(
-              90deg,
-              rgba(0, 0, 0, 0.06) 1px,
-              transparent 1px
-            )
-            0 0/20px 20px,
-          linear-gradient(180deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px) 0 0/20px
-            20px,
-          #f4f6f9;
-        border: 2px solid #6b7280;
-      }
+        /* Titres décoratifs */
+        .y-hgroup {
+            position: relative;
+            padding-left: 1.1rem;
+        }
 
-      /* Table */
-      .y-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        border: 2px solid #6b7280;
-        border-radius: 12px;
-        overflow: hidden;
-      }
-      .y-table th,
-      .y-table td {
-        padding: 0.75rem 1rem;
-        border-bottom: 1px solid #d9dde5;
-        background: #fff;
-      }
-      .y-table thead th {
-        background: #f0f2f7;
-        font-weight: 800;
-      }
+        .y-hgroup::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            border-radius: 4px;
+            background: linear-gradient(180deg, #e70012, #c91422);
+        }
 
-      /* Steps */
-      .y-steps {
-        counter-reset: step;
-      }
-      .y-step {
-        position: relative;
-        padding-left: 3.2rem;
-        margin-bottom: 1.2rem;
-      }
-      .y-step::before {
-        counter-increment: step;
-        content: counter(step);
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 2.2rem;
-        height: 2.2rem;
-        border: 2px solid #6b7280;
-        border-radius: 9999px;
-        background: #fff;
-        display: grid;
-        place-items: center;
-        font-weight: 800;
-      }
-      .y-step::after {
-        content: "";
-        position: absolute;
-        left: 1.05rem;
-        top: 2.4rem;
-        bottom: -0.9rem;
-        width: 2px;
-        background: #d8dbe2;
-      }
-      .y-step:last-child::after {
-        display: none;
-      }
+        .y-titleDeco1,
+        .y-titleDeco2 {
+            position: relative;
+            padding-left: 0.9rem;
+        }
 
-      /* Breadcrumb */
-      .y-breadcrumb a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .y-breadcrumb a + a::before {
-        content: "";
-        width: 0.5rem;
-        height: 0.5rem;
-        background: #333842;
-        display: inline-block;
-        mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="currentColor"/></svg>')
-          no-repeat center / contain;
-        margin: 0 0.35rem;
-      }
+        .y-titleDeco1::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.35em;
+            width: 8px;
+            height: 8px;
+            background: #333842;
+            border-radius: 2px;
+        }
 
-      /* Divider bande */
-      .y-divider {
-        height: 10px;
-        background: linear-gradient(90deg, #333842 50%, transparent 0) 0 0/12px
-            2px,
-          linear-gradient(90deg, #333842 50%, transparent 0) 0 8px/12px 2px;
-      }
+        .y-titleDeco2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.35em;
+            width: 8px;
+            height: 8px;
+            background: #e70012;
+            border-radius: 2px;
+        }
 
-      /* Accordion */
-      .y-acc-head {
-        border: 2px solid #6b7280;
-        border-radius: 12px;
-        background: #fff;
-      }
-      .y-acc-body {
-        border: 2px solid #6b7280;
-        border-top: none;
-        border-radius: 0 0 12px 12px;
-        background: #fff;
-      }
+        /* Icônes flèches */
+        .y-arrow::after,
+        .y-miniArrow::after,
+        .y-blockArrow::after {
+            content: "";
+            display: inline-block;
+            background: currentColor;
+            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path d="M8 5l8 7-8 7" fill="currentColor"/></svg>') no-repeat center / contain;
+        }
 
-      /* Stamps et kamon */
-      .y-stamp {
-        border: 3px solid #333842;
-        border-radius: 9999px;
-        padding: 0.35rem 0.7rem;
-        font-weight: 900;
-        letter-spacing: 0.04em;
-        background: #fff;
-        display: inline-block;
-      }
+        .y-arrow::after {
+            width: 0.6em;
+            height: 0.6em;
+            margin-left: 0.35em;
+            transform: translateY(1px);
+        }
 
-      .y-kamon {
-        position: absolute;
-        width: 42px;
-        height: 42px;
-        border: 2px solid #333842;
-        border-radius: 50%;
-        background: radial-gradient(
-            circle at 50% 50%,
-            #333842 8px,
-            transparent 9px
-          ),
-          conic-gradient(
-            from 0deg,
-            transparent 0 25%,
-            #333842 25% 50%,
-            transparent 50% 75%,
-            #333842 75% 100%
-          );
-        opacity: 0.08;
-      }
-      .y-kamon.lt {
-        left: -10px;
-        top: -10px;
-      }
-      .y-kamon.rb {
-        right: -10px;
-        bottom: -10px;
-      }
+        .y-miniArrow::after {
+            width: 0.55em;
+            height: 0.55em;
+            margin-left: 0.35em;
+            transform: translateY(1px);
+        }
 
-      /* CSS custom props pour thème */
-      :root {
-        --y-bg: #fafbfc;
-        --y-ink: #222426;
-        --y-line: #d8dbe2;
-        --y-surface: #ffffff;
-      }
-      .theme-dark {
-        --y-bg: #0f1115;
-        --y-ink: #e9ecf5;
-        --y-line: #2a2f3a;
-        --y-surface: #141821;
-      }
-      body {
-        background: var(--y-bg);
-        color: var(--y-ink);
-      }
-      .y-surface {
-        background: var(--y-surface);
-      }
-      .y-border {
-        border-color: var(--y-line);
-      }
+        .y-blockArrow::after {
+            width: 10px;
+            height: 10px;
+            margin-left: 0.5rem;
+        }
+
+        /* Boutons */
+        .y-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            padding: 0.65rem 1.1rem;
+            transition: transform 0.12s var(--ease), box-shadow 0.12s var(--ease),
+                background 0.12s var(--ease);
+        }
+
+        .y-btn:focus-visible {
+            outline: 2px solid rgba(37, 96, 240, 0.4);
+            outline-offset: 2px;
+            border-radius: 9999px;
+        }
+
+        .y-btn-primary {
+            background: #2560f0;
+            color: #fff;
+        }
+
+        .y-btn-primary:hover {
+            background: #1f52cc;
+            transform: translateY(-1px);
+        }
+
+        .y-btn-accent {
+            background: #e70012;
+            color: #fff;
+        }
+
+        .y-btn-accent:hover {
+            background: #c91422;
+            transform: translateY(-1px);
+        }
+
+        .y-btn-line {
+            background: #fff;
+            box-shadow: inset 0 0 0 2px #6b7280;
+            color: #333842;
+        }
+
+        .y-btn-line:hover {
+            background: #6b7280;
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .y-btn-ghost {
+            background: transparent;
+            box-shadow: inset 0 0 0 2px #d8dbe2;
+            color: #333842;
+        }
+
+        .y-btn-ghost:hover {
+            background: #f6f7f9;
+        }
+
+        /* Chips, kbd */
+        .y-chip {
+            border: 2px solid #6b7280;
+            border-radius: 9999px;
+            padding: 0.25rem 0.6rem;
+            font-weight: 500;
+            background: #fff;
+        }
+
+        .y-kbd {
+            border: 2px solid #6b7280;
+            border-radius: 6px;
+            padding: 0.1rem 0.35rem;
+            background: #fff;
+            font-weight: 500;
+            font-size: 0.8em;
+        }
+
+        /* Cartes et notices */
+        .y-notice {
+            border: 2px solid #6b7280;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .y-card {
+            border: 2px solid #6b7280;
+            border-radius: 14px;
+            background: #fff;
+        }
+
+        /* Map placeholder */
+        .y-map {
+            background: linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.06) 1px,
+                    transparent 1px) 0 0/20px 20px,
+                linear-gradient(180deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px) 0 0/20px 20px,
+                #f4f6f9;
+            border: 2px solid #6b7280;
+        }
+
+        /* Table */
+        .y-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 2px solid #6b7280;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .y-table th,
+        .y-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #d9dde5;
+            background: #fff;
+        }
+
+        .y-table thead th {
+            background: #f0f2f7;
+            font-weight: 800;
+        }
+
+        /* Steps */
+        .y-steps {
+            counter-reset: step;
+        }
+
+        .y-step {
+            position: relative;
+            padding-left: 3.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .y-step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.2rem;
+            height: 2.2rem;
+            border: 2px solid #6b7280;
+            border-radius: 9999px;
+            background: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+        }
+
+        .y-step::after {
+            content: "";
+            position: absolute;
+            left: 1.05rem;
+            top: 2.4rem;
+            bottom: -0.9rem;
+            width: 2px;
+            background: #d8dbe2;
+        }
+
+        .y-step:last-child::after {
+            display: none;
+        }
+
+        /* Breadcrumb */
+        .y-breadcrumb a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .y-breadcrumb a+a::before {
+            content: "";
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #333842;
+            display: inline-block;
+            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="currentColor"/></svg>') no-repeat center / contain;
+            margin: 0 0.35rem;
+        }
+
+        /* Divider bande */
+        .y-divider {
+            height: 10px;
+            background: linear-gradient(90deg, #333842 50%, transparent 0) 0 0/12px 2px,
+                linear-gradient(90deg, #333842 50%, transparent 0) 0 8px/12px 2px;
+        }
+
+        /* Accordion */
+        .y-acc-head {
+            border: 2px solid #6b7280;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .y-acc-body {
+            border: 2px solid #6b7280;
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            background: #fff;
+        }
+
+        /* Stamps et kamon */
+        .y-stamp {
+            border: 3px solid #333842;
+            border-radius: 9999px;
+            padding: 0.35rem 0.7rem;
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            background: #fff;
+            display: inline-block;
+        }
+
+        .y-kamon {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border: 2px solid #333842;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%,
+                    #333842 8px,
+                    transparent 9px),
+                conic-gradient(from 0deg,
+                    transparent 0 25%,
+                    #333842 25% 50%,
+                    transparent 50% 75%,
+                    #333842 75% 100%);
+            opacity: 0.08;
+        }
+
+        .y-kamon.lt {
+            left: -10px;
+            top: -10px;
+        }
+
+        .y-kamon.rb {
+            right: -10px;
+            bottom: -10px;
+        }
+
+        /* CSS custom props pour thème */
+        :root {
+            --y-bg: #fafbfc;
+            --y-ink: #222426;
+            --y-line: #d8dbe2;
+            --y-surface: #ffffff;
+        }
+
+        .theme-dark {
+            --y-bg: #0f1115;
+            --y-ink: #e9ecf5;
+            --y-line: #2a2f3a;
+            --y-surface: #141821;
+        }
+
+        body {
+            background: var(--y-bg);
+            color: var(--y-ink);
+        }
+
+        .y-surface {
+            background: var(--y-surface);
+        }
+
+        .y-border {
+            border-color: var(--y-line);
+        }
     </style>
-  </head>
+</head>
 
-  <body class="bg-yBg font-sans text-yInk">
+<body class="bg-yBg font-sans text-yInk">
     <a
-      href="#hero"
-      class="sr-only focus:not-sr-only focus-ring fixed top-2 left-2 y-surface px-3 py-2 rounded shadow-subtle z-50"
-      >Aller au contenu</a
-    >
+        href="#hero"
+        class="sr-only focus:not-sr-only focus-ring fixed top-2 left-2 y-surface px-3 py-2 rounded shadow-subtle z-50">Aller au contenu</a>
 
     <!-- Header -->
     <header
-      id="siteHeader"
-      class="fixed top-0 inset-x-0 z-50 y-surface y-header-blur border-b y-border transition-shadow"
-    >
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="h-14 flex items-center justify-between">
-          <a href="#" class="inline-flex items-center gap-2">
-            <span
-              class="inline-block w-8 h-8 rounded-full border-2 border-yBlack grid place-items-center"
-            >
-              <span class="block w-4 h-4 bg-yBlack"></span>
-            </span>
-            <span class="font-extrabold tracking-tight">Yugen</span>
-          </a>
-
-          <nav class="hidden md:block">
-            <ul class="flex items-center gap-6 text-[15px]">
-              <li>
-                <a
-                  class="hover:underline underline-offset-4 y-arrow"
-                  href="#hero"
-                  >Home</a
-                >
-              </li>
-              <li>
-                <a
-                  class="hover:underline underline-offset-4 y-arrow"
-                  href="#services"
-                  >Services</a
-                >
-              </li>
-              <li>
-                <a
-                  class="hover:underline underline-offset-4 y-arrow"
-                  href="#products"
-                  >Products</a
-                >
-              </li>
-              <li class="relative group">
-                <a
-                  class="hover:underline underline-offset-4 flex items-center gap-1"
-                  href="#guides"
-                  >Resources
-                  <svg
-                    class="w-3 h-3 opacity-70"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M7 10l5 5 5-5" />
-                  </svg>
+        id="siteHeader"
+        class="fixed top-0 inset-x-0 z-50 y-surface y-header-blur border-b y-border transition-shadow">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="h-14 flex items-center justify-between">
+                <a href="#" class="inline-flex items-center gap-2">
+                    <span
+                        class="inline-block w-8 h-8 rounded-full border-2 border-yBlack grid place-items-center">
+                        <span class="block w-4 h-4 bg-yBlack"></span>
+                    </span>
+                    <span class="font-extrabold tracking-tight">Yugen</span>
                 </a>
-                <ul
-                  class="absolute right-0 mt-2 y-surface border y-border rounded-md shadow-subtle py-2 w-64 hidden group-hover:block"
-                >
-                  <li>
-                    <a class="block px-3 py-2 hover:bg-yBg" href="#visit-flow"
-                      >From Reservation to Arrival</a
-                    >
-                  </li>
-                  <li>
-                    <a class="block px-3 py-2 hover:bg-yBg" href="#a11y"
-                      >Accessibility</a
-                    >
-                  </li>
-                  <li>
-                    <a class="block px-3 py-2 hover:bg-yBg" href="#service"
-                      >Guidance</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a
-                  class="hover:underline underline-offset-4 y-arrow"
-                  href="#access"
-                  >Getting Here</a
-                >
-              </li>
-              <li>
-                <button class="y-btn y-btn-line" id="openTickets">
-                  Reserve Tickets
+
+                <nav class="hidden md:block">
+                    <ul class="flex items-center gap-6 text-[15px]">
+                        <li>
+                            <a
+                                class="hover:underline underline-offset-4 y-arrow"
+                                href="#hero">Home</a>
+                        </li>
+                        <li>
+                            <a
+                                class="hover:underline underline-offset-4 y-arrow"
+                                href="#services">Services</a>
+                        </li>
+                        <li>
+                            <a
+                                class="hover:underline underline-offset-4 y-arrow"
+                                href="#products">Products</a>
+                        </li>
+                        <li class="relative group">
+                            <a
+                                class="hover:underline underline-offset-4 flex items-center gap-1"
+                                href="#guides">Resources
+                                <svg
+                                    class="w-3 h-3 opacity-70"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M7 10l5 5 5-5" />
+                                </svg>
+                            </a>
+                            <ul
+                                class="absolute right-0 mt-2 y-surface border y-border rounded-md shadow-subtle py-2 w-64 hidden group-hover:block">
+                                <li>
+                                    <a class="block px-3 py-2 hover:bg-yBg" href="#visit-flow">From Reservation to Arrival</a>
+                                </li>
+                                <li>
+                                    <a class="block px-3 py-2 hover:bg-yBg" href="#a11y">Accessibility</a>
+                                </li>
+                                <li>
+                                    <a class="block px-3 py-2 hover:bg-yBg" href="#service">Guidance</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a
+                                class="hover:underline underline-offset-4 y-arrow"
+                                href="#access">Getting Here</a>
+                        </li>
+                        <li>
+                            <button class="y-btn y-btn-line" id="openTickets">
+                                Reserve Tickets
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="hidden md:flex items-center gap-2">
+                    <select
+                        id="lang"
+                        class="border y-border rounded-md px-2 py-1 bg-white text-[14px]"
+                        aria-label="Language">
+                        <option>English</option>
+                        <option>日本語</option>
+                        <option>Français</option>
+                    </select>
+                </div>
+
+                <button
+                    id="yMenuBtn"
+                    class="md:hidden p-2"
+                    aria-expanded="false"
+                    aria-controls="yMenu">
+                    <span class="sr-only">Open menu</span>
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+                    </svg>
                 </button>
-              </li>
-            </ul>
-          </nav>
-
-          <div class="hidden md:flex items-center gap-2">
-            <select
-              id="lang"
-              class="border y-border rounded-md px-2 py-1 bg-white text-[14px]"
-              aria-label="Language"
-            >
-              <option>English</option>
-              <option>日本語</option>
-              <option>Français</option>
-            </select>
-          </div>
-
-          <button
-            id="yMenuBtn"
-            class="md:hidden p-2"
-            aria-expanded="false"
-            aria-controls="yMenu"
-          >
-            <span class="sr-only">Open menu</span>
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
-            </svg>
-          </button>
+            </div>
         </div>
-      </div>
 
-      <div id="yMenu" class="md:hidden hidden border-t y-border y-surface">
-        <div class="max-w-7xl mx-auto px-4 py-3">
-          <ul class="grid gap-2 text-[16px]">
-            <li><a class="block py-2 y-blockArrow" href="#hero">Home</a></li>
-            <li>
-              <a class="block py-2 y-blockArrow" href="#services">Services</a>
-            </li>
-            <li>
-              <a class="block py-2 y-blockArrow" href="#products">Products</a>
-            </li>
-            <li>
-              <a class="block py-2 y-blockArrow" href="#guides">Resources</a>
-            </li>
-            <li>
-              <a class="block py-2 y-blockArrow" href="#access">Getting Here</a>
-            </li>
-            <li class="pt-1">
-              <button class="y-btn y-btn-line w-full" id="openTicketsMobile">
-                Reserve Tickets
-              </button>
-            </li>
-          </ul>
+        <div id="yMenu" class="md:hidden hidden border-t y-border y-surface">
+            <div class="max-w-7xl mx-auto px-4 py-3">
+                <ul class="grid gap-2 text-[16px]">
+                    <li><a class="block py-2 y-blockArrow" href="#hero">Home</a></li>
+                    <li>
+                        <a class="block py-2 y-blockArrow" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 y-blockArrow" href="#products">Products</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 y-blockArrow" href="#guides">Resources</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 y-blockArrow" href="#access">Getting Here</a>
+                    </li>
+                    <li class="pt-1">
+                        <button class="y-btn y-btn-line w-full" id="openTicketsMobile">
+                            Reserve Tickets
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </header>
 
     <main class="pt-14">
-      <!-- Utility bar -->
-      <div
-        class="bg-blue-50/70 backdrop-blur supports-[backdrop-filter]:bg-white/75 border-b y-border"
-      >
+        <!-- Utility bar -->
         <div
-          class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3 text-[13px]"
-        >
-          <div class="flex items-center gap-2">
-            <span class="dot" style="background: #5c8bb9"></span>
-            <span
-              class="uppercase tracking-widest"
-              style="color: #5c8bb9; font-weight: 600"
-              >Info</span
-            >
-            <span class="hidden sm:inline word-tight"
-              >Service hours 9:00 to 18:00</span
-            >
-          </div>
-          <div class="ml-auto flex items-center gap-2">
-            <button
-              id="a-"
-              class="px-2 py-1 rounded btn-outline hover:bg-gray-50"
-            >
-              A−
-            </button>
-            <button id="a0" class="px-2 py-1 rounded bg-white shadow-sm">
-              A
-            </button>
-            <button
-              id="a+"
-              class="px-2 py-1 rounded btn-outline hover:bg-gray-50"
-            >
-              A＋
-            </button>
-            <a
-              href="#"
-              class="hidden sm:inline px-2 py-1 rounded"
-              style="background: #5c8bb9; color: #fff"
-              >Emergency</a
-            >
-            <a href="#a11y" class="px-2 py-1 rounded btn-outline"
-              >Accessibility</a
-            >
-            <button
-              id="themeToggle"
-              class="px-2 py-1 rounded btn-outline"
-              aria-pressed="false"
-            >
-              Light
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fil d'ariane + Stamp -->
-      <section class="y-surface border-b y-border">
-        <div
-          class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
-        >
-          <nav class="y-breadcrumb text-sm">
-            <a href="#">Home</a>
-            <a href="#guides">Resources</a>
-            <a href="#hero">Overview</a>
-          </nav>
-        </div>
-      </section>
-
-      <!-- Hero -->
-      <section
-        id="hero"
-        class="y-grid border-b y-border relative overflow-hidden"
-      >
-        <div class="max-w-7xl mx-auto px-4 py-8 md:py-10">
-          <hgroup class="y-hgroup">
-            <div class="mb-4 relative">
-              <img
-                src="https://images.unsplash.com/photo-1583228196254-6af7d89f1b66?w=1200&h=420&fit=crop&auto=format"
-                alt=""
-                class="w-full rounded-md border-2 border-yBlack shadow-subtle"
-              />
+            class="bg-blue-50/70 backdrop-blur supports-[backdrop-filter]:bg-white/75 border-b y-border">
+            <div
+                class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3 text-[13px]">
+                <div class="flex items-center gap-2">
+                    <span class="dot" style="background: #5c8bb9"></span>
+                    <span
+                        class="uppercase tracking-widest"
+                        style="color: #5c8bb9; font-weight: 600">Info</span>
+                    <span class="hidden sm:inline word-tight">Service hours 9:00 to 18:00</span>
+                </div>
+                <div class="ml-auto flex items-center gap-2">
+                    <button
+                        id="a-"
+                        class="px-2 py-1 rounded btn-outline hover:bg-gray-50">
+                        A−
+                    </button>
+                    <button id="a0" class="px-2 py-1 rounded bg-white shadow-sm">
+                        A
+                    </button>
+                    <button
+                        id="a+"
+                        class="px-2 py-1 rounded btn-outline hover:bg-gray-50">
+                        A＋
+                    </button>
+                    <a
+                        href="#"
+                        class="hidden sm:inline px-2 py-1 rounded"
+                        style="background: #5c8bb9; color: #fff">Emergency</a>
+                    <a href="#a11y" class="px-2 py-1 rounded btn-outline">Accessibility</a>
+                    <button
+                        id="themeToggle"
+                        class="px-2 py-1 rounded btn-outline"
+                        aria-pressed="false">
+                        Light
+                    </button>
+                </div>
             </div>
-            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
-              Yugen Design System
-            </h1>
-            <p class="text-neutral-600 mt-2">
-              Precision, visual hierarchy, information density, and
-              micro-details inspired by Japanese public portals.
-            </p>
-          </hgroup>
-          <div class="mt-4 flex items-center gap-3">
-            <button class="y-btn y-btn-accent">Get Started</button>
-            <a class="y-btn y-btn-line" href="#tokens">View Tokens</a>
-            <span class="text-sm"
-              >Tip <kbd class="y-kbd">/</kbd> to search</span
-            >
-          </div>
         </div>
-      </section>
 
-      <!-- Notices -->
-      <section class="y-surface">
-        <div class="max-w-7xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-6">
-          <div class="y-notice p-5 md:p-6">
-            <p class="text-[15px]">
-              <strong
-                >No parking is available for cars, motorcycles, or
-                bicycles.</strong
-              >
-            </p>
-            <p class="text-[15px] mt-2">
-              Please use public transportation. For accessibility needs, contact
-              us to receive parking instructions by email.
-            </p>
-          </div>
-          <div class="y-notice p-5 md:p-6">
-            <p class="text-[15px]"><strong>Peak days guidance</strong></p>
-            <p class="text-[15px] mt-2">
-              Arrive 10 minutes early. Queuing lanes are indicated by floor
-              markers and staff guidance.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Ticker -->
-      <section
-        class="border-y y-border"
-        style="background: rgba(230, 186, 93, 0.2)"
-      >
-        <div
-          class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 text-sm ticker"
-        >
-          <span
-            class="px-3 py-1 rounded"
-            style="background: #e6ba5d; color: #3c3c3c; font-weight: 600"
-            >Notice</span
-          >
-          <div class="relative flex-1 overflow-hidden">
-            <div class="flex ticker-track">
-              <p class="mr-8 whitespace-nowrap">
-                <a class="hover:underline" href="#"
-                  >Maintenance Sept 12 at 01:00</a
-                >
-              </p>
-              <p class="mr-8 whitespace-nowrap">
-                <a class="hover:underline" href="#"
-                  >New booking slots available for October</a
-                >
-              </p>
-              <p class="mr-8 whitespace-nowrap">
-                <a class="hover:underline" href="#"
-                  >Updated accessibility guidelines published</a
-                >
-              </p>
-              <p class="mr-8 whitespace-nowrap">
-                <a class="hover:underline" href="#"
-                  >Maintenance Sept 12 at 01:00</a
-                >
-              </p>
-              <p class="mr-8 whitespace-nowrap">
-                <a class="hover:underline" href="#"
-                  >New booking slots available for October</a
-                >
-              </p>
-              <p class="mr-8 whitespace-nowrap">
-                <a class="hover:underline" href="#"
-                  >Updated accessibility guidelines published</a
-                >
-              </p>
+        <!-- Fil d'ariane + Stamp -->
+        <section class="y-surface border-b y-border">
+            <div
+                class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                <nav class="y-breadcrumb text-sm">
+                    <a href="#">Home</a>
+                    <a href="#guides">Resources</a>
+                    <a href="#hero">Overview</a>
+                </nav>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Services -->
-      <section id="services" class="max-w-7xl mx-auto px-4 py-16">
-        <div class="flex items-end justify-between mb-8">
-          <div>
-            <p
-              class="section-label text-xs"
-              style="color: #5c8bb9; font-weight: 500; letter-spacing: 0.12em"
-            >
-              Services
-            </p>
-            <h3 class="text-2xl font-bold">Design Solutions</h3>
-          </div>
-          <div
-            class="flex gap-2 text-sm"
-            role="tablist"
-            aria-label="Service categories"
-          >
-            <button
-              class="px-4 py-2 rounded-full btn-outline tab-btn active focus-ring"
-              data-tab="consulting"
-              role="tab"
-              aria-selected="true"
-            >
-              Consulting
-            </button>
-            <button
-              class="px-4 py-2 rounded-full btn-outline tab-btn focus-ring"
-              data-tab="development"
-              role="tab"
-              aria-selected="false"
-            >
-              Development
-            </button>
-            <button
-              class="px-4 py-2 rounded-full btn-outline tab-btn focus-ring"
-              data-tab="research"
-              role="tab"
-              aria-selected="false"
-            >
-              Research
-            </button>
-          </div>
-        </div>
+        <!-- Hero -->
+        <section
+            id="hero"
+            class="y-grid border-b y-border relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 py-8 md:py-10">
+                <hgroup class="y-hgroup">
+                    <div class="mb-4 relative">
+                        <img
+                            src="https://images.unsplash.com/photo-1583228196254-6af7d89f1b66?w=1200&h=420&fit=crop&auto=format"
+                            alt=""
+                            class="w-full rounded-md border-2 border-yBlack shadow-subtle" />
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
+                        Yugen Design System
+                    </h1>
+                    <p class="text-neutral-600 mt-2">
+                        Precision, visual hierarchy, information density, and
+                        micro-details inspired by Japanese public portals.
+                    </p>
+                </hgroup>
+                <div class="mt-4 flex items-center gap-3">
+                    <button class="y-btn y-btn-accent">Get Started</button>
+                    <a class="y-btn y-btn-line" href="#tokens">View Tokens</a>
+                    <span class="text-sm">Tip <kbd class="y-kbd">/</kbd> to search</span>
+                </div>
+            </div>
+        </section>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <div
-            class="md:col-span-2 y-surface rounded-xl p-6 shadow-sm border y-border"
-          >
-            <div class="tab-content" id="consulting" role="tabpanel">
-              <ul class="divide-y divide-gray-100">
-                <li class="py-4 flex items-start gap-4">
-                  <span
-                    class="inline-flex items-center px-3 py-1 text-xs rounded-full"
-                    style="
+        <!-- Notices -->
+        <section class="y-surface">
+            <div class="max-w-7xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-6">
+                <div class="y-notice p-5 md:p-6">
+                    <p class="text-[15px]">
+                        <strong>No parking is available for cars, motorcycles, or
+                            bicycles.</strong>
+                    </p>
+                    <p class="text-[15px] mt-2">
+                        Please use public transportation. For accessibility needs, contact
+                        us to receive parking instructions by email.
+                    </p>
+                </div>
+                <div class="y-notice p-5 md:p-6">
+                    <p class="text-[15px]"><strong>Peak days guidance</strong></p>
+                    <p class="text-[15px] mt-2">
+                        Arrive 10 minutes early. Queuing lanes are indicated by floor
+                        markers and staff guidance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ticker -->
+        <section
+            class="border-y y-border"
+            style="background: rgba(230, 186, 93, 0.2)">
+            <div
+                class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 text-sm ticker">
+                <span
+                    class="px-3 py-1 rounded"
+                    style="background: #e6ba5d; color: #3c3c3c; font-weight: 600">Notice</span>
+                <div class="relative flex-1 overflow-hidden">
+                    <div class="flex ticker-track">
+                        <p class="mr-8 whitespace-nowrap">
+                            <a class="hover:underline" href="#">Maintenance Sept 12 at 01:00</a>
+                        </p>
+                        <p class="mr-8 whitespace-nowrap">
+                            <a class="hover:underline" href="#">New booking slots available for October</a>
+                        </p>
+                        <p class="mr-8 whitespace-nowrap">
+                            <a class="hover:underline" href="#">Updated accessibility guidelines published</a>
+                        </p>
+                        <p class="mr-8 whitespace-nowrap">
+                            <a class="hover:underline" href="#">Maintenance Sept 12 at 01:00</a>
+                        </p>
+                        <p class="mr-8 whitespace-nowrap">
+                            <a class="hover:underline" href="#">New booking slots available for October</a>
+                        </p>
+                        <p class="mr-8 whitespace-nowrap">
+                            <a class="hover:underline" href="#">Updated accessibility guidelines published</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="max-w-7xl mx-auto px-4 py-16">
+            <div class="flex items-end justify-between mb-8">
+                <div>
+                    <p
+                        class="section-label text-xs"
+                        style="color: #5c8bb9; font-weight: 500; letter-spacing: 0.12em">
+                        Services
+                    </p>
+                    <h3 class="text-2xl font-bold">Design Solutions</h3>
+                </div>
+                <div
+                    class="flex gap-2 text-sm"
+                    role="tablist"
+                    aria-label="Service categories">
+                    <button
+                        class="px-4 py-2 rounded-full btn-outline tab-btn active focus-ring"
+                        data-tab="consulting"
+                        role="tab"
+                        aria-selected="true">
+                        Consulting
+                    </button>
+                    <button
+                        class="px-4 py-2 rounded-full btn-outline tab-btn focus-ring"
+                        data-tab="development"
+                        role="tab"
+                        aria-selected="false">
+                        Development
+                    </button>
+                    <button
+                        class="px-4 py-2 rounded-full btn-outline tab-btn focus-ring"
+                        data-tab="research"
+                        role="tab"
+                        aria-selected="false">
+                        Research
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="md:col-span-2 y-surface rounded-xl p-6 shadow-sm border y-border">
+                    <div class="tab-content" id="consulting" role="tabpanel">
+                        <ul class="divide-y divide-gray-100">
+                            <li class="py-4 flex items-start gap-4">
+                                <span
+                                    class="inline-flex items-center px-3 py-1 text-xs rounded-full"
+                                    style="
                       background: rgba(92, 139, 185, 0.1);
                       color: #5c8bb9;
                       font-weight: 500;
-                    "
-                    >Strategy</span
-                  >
-                  <div class="flex-1">
-                    <p class="font-semibold mb-1">Design System Architecture</p>
-                    <p class="text-sm text-gray-600">
-                      Comprehensive design system planning and implementation
-                      strategies
-                    </p>
-                  </div>
-                  <a href="#" class="text-yBlue text-sm y-miniArrow">Details</a>
-                </li>
-                <li class="py-4 flex items-start gap-4">
-                  <span
-                    class="inline-flex items-center px-3 py-1 text-xs rounded-full"
-                    style="
+                    ">Strategy</span>
+                                <div class="flex-1">
+                                    <p class="font-semibold mb-1">Design System Architecture</p>
+                                    <p class="text-sm text-gray-600">
+                                        Comprehensive design system planning and implementation
+                                        strategies
+                                    </p>
+                                </div>
+                                <a href="#" class="text-yBlue text-sm y-miniArrow">Details</a>
+                            </li>
+                            <li class="py-4 flex items-start gap-4">
+                                <span
+                                    class="inline-flex items-center px-3 py-1 text-xs rounded-full"
+                                    style="
                       background: rgba(231, 0, 18, 0.1);
                       color: #e70012;
                       font-weight: 500;
-                    "
-                    >Workshop</span
-                  >
-                  <div class="flex-1">
-                    <p class="font-semibold mb-1">Team Training Sessions</p>
-                    <p class="text-sm text-gray-600">
-                      Hands on workshops for design and development teams
-                    </p>
-                  </div>
-                  <a href="#" class="text-yBlue text-sm y-miniArrow"
-                    >Register</a
-                  >
-                </li>
-                <li class="py-4 flex items-start gap-4">
-                  <span
-                    class="inline-flex items-center px-3 py-1 text-xs rounded-full"
-                    style="
+                    ">Workshop</span>
+                                <div class="flex-1">
+                                    <p class="font-semibold mb-1">Team Training Sessions</p>
+                                    <p class="text-sm text-gray-600">
+                                        Hands on workshops for design and development teams
+                                    </p>
+                                </div>
+                                <a href="#" class="text-yBlue text-sm y-miniArrow">Register</a>
+                            </li>
+                            <li class="py-4 flex items-start gap-4">
+                                <span
+                                    class="inline-flex items-center px-3 py-1 text-xs rounded-full"
+                                    style="
                       background: rgba(230, 186, 93, 0.2);
                       color: #3c3c3c;
                       font-weight: 500;
-                    "
-                    >Review</span
-                  >
-                  <div class="flex-1">
-                    <p class="font-semibold mb-1">Design System Audit</p>
-                    <p class="text-sm text-gray-600">
-                      Comprehensive review of existing design implementations
-                    </p>
-                  </div>
-                  <a href="#" class="text-yBlue text-sm y-miniArrow"
-                    >Schedule</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="tab-content hidden" id="development" role="tabpanel">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <article class="y-card p-4">
-                  <p class="text-xs text-gray-500">Components</p>
-                  <h4 class="font-semibold">UI Library Build</h4>
-                  <p class="text-sm text-gray-600">
-                    Production ready Tailwind components and tokens
-                  </p>
-                </article>
-                <article class="y-card p-4">
-                  <p class="text-xs text-gray-500">Workflow</p>
-                  <h4 class="font-semibold">Design Tokens</h4>
-                  <p class="text-sm text-gray-600">
-                    Cross platform token pipeline and docs
-                  </p>
-                </article>
-              </div>
-            </div>
-            <div class="tab-content hidden" id="research" role="tabpanel">
-              <ul class="space-y-3">
-                <li class="y-card p-4">
-                  <p class="font-semibold">User Research Sprint</p>
-                  <p class="text-sm text-gray-600">
-                    5 day research plan with synthesis
-                  </p>
-                </li>
-                <li class="y-card p-4">
-                  <p class="font-semibold">Benchmark Study</p>
-                  <p class="text-sm text-gray-600">
-                    Comparative analysis across JP public portals
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <aside
-            class="y-surface rounded-xl p-6 shadow-sm border y-border"
-            aria-label="Side resources"
-          >
-            <p class="font-semibold mb-4">Quick Downloads</p>
-            <ul class="space-y-3 text-sm">
-              <li>
-                <a
-                  class="flex items-center gap-2 hover:underline focus-ring"
-                  href="#"
-                  ><span class="dot" style="background: #5c8bb9"></span>Design
-                  Guidelines PDF</a
-                >
-              </li>
-              <li>
-                <a
-                  class="flex items-center gap-2 hover:underline focus-ring"
-                  href="#"
-                  ><span class="dot" style="background: #0c8e62"></span
-                  >Component Library</a
-                >
-              </li>
-              <li>
-                <a
-                  class="flex items-center gap-2 hover:underline focus-ring"
-                  href="#"
-                  ><span class="dot" style="background: #e6ba5d"></span>Color
-                  Specifications</a
-                >
-              </li>
-            </ul>
-            <hr class="my-4" />
-            <p class="font-semibold mb-2">Useful Links</p>
-            <ul class="space-y-2 text-sm">
-              <li>
-                <a class="hover:underline focus-ring" href="#">Client Portal</a>
-              </li>
-              <li><a class="hover:underline focus-ring" href="#">FAQ</a></li>
-              <li>
-                <a class="hover:underline focus-ring" href="#a11y"
-                  >Accessibility Standards</a
-                >
-              </li>
-            </ul>
-          </aside>
-        </div>
-      </section>
-
-      <!-- Products Grid -->
-      <section id="products" class="y-surface border-y y-border">
-        <div class="max-w-7xl mx-auto px-4 py-12">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="y-titleDeco2 text-2xl font-bold">Products and Kits</h3>
-            <div class="flex gap-2">
-              <button class="y-btn y-btn-ghost">All</button>
-              <button class="y-btn y-btn-ghost">Tokens</button>
-              <button class="y-btn y-btn-ghost">Components</button>
-              <button class="y-btn y-btn-ghost">Patterns</button>
-            </div>
-          </div>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article class="y-card p-5">
-              <h4 class="font-bold">Token Starter</h4>
-              <p class="text-sm text-neutral-600 mt-1">
-                Color, spacing, radius and shadows in a cross platform JSON.
-              </p>
-              <div class="mt-3 flex items-center gap-2">
-                <span class="y-chip">JSON</span>
-                <span class="y-chip">Style Dictionary</span>
-              </div>
-              <a
-                href="#"
-                class="mt-4 inline-block y-miniArrow"
-                style="color: #2560f0"
-                >Download</a
-              >
-            </article>
-            <article class="y-card p-5">
-              <h4 class="font-bold">Form Controls</h4>
-              <p class="text-sm text-neutral-600 mt-1">
-                Input, select, radio, checkbox and validation states.
-              </p>
-              <div class="mt-3 flex items-center gap-2">
-                <span class="y-chip">Tailwind</span>
-                <span class="y-chip">ARIA</span>
-              </div>
-              <a
-                href="#"
-                class="mt-4 inline-block y-miniArrow"
-                style="color: #2560f0"
-                >Preview</a
-              >
-            </article>
-            <article class="y-card p-5">
-              <h4 class="font-bold">Navigation Kit</h4>
-              <p class="text-sm text-neutral-600 mt-1">
-                Headers, breadcrumbs, side rails and menus.
-              </p>
-              <div class="mt-3 flex items-center gap-2">
-                <span class="y-chip">Responsive</span>
-                <span class="y-chip">A11y</span>
-              </div>
-              <a
-                href="#"
-                class="mt-4 inline-block y-miniArrow"
-                style="color: #2560f0"
-                >Docs</a
-              >
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Guides -->
-      <section id="guides" class="max-w-7xl mx-auto px-4 py-14">
-        <div id="visit-flow" class="grid lg:grid-cols-2 gap-10 items-start">
-          <div>
-            <h3 class="y-titleDeco1 text-2xl font-bold mb-4">
-              From Reservation to Arrival
-            </h3>
-            <ol class="y-steps">
-              <li class="y-step">
-                <p class="font-bold">Create your account</p>
-                <p class="text-sm text-neutral-600">
-                  Use email sign in and verify within 10 minutes.
-                </p>
-              </li>
-              <li class="y-step">
-                <p class="font-bold">Select date and slot</p>
-                <p class="text-sm text-neutral-600">
-                  Peak days display limited stock indicators.
-                </p>
-              </li>
-              <li class="y-step">
-                <p class="font-bold">Confirm and pay</p>
-                <p class="text-sm text-neutral-600">
-                  Credit card only. A receipt is emailed instantly.
-                </p>
-              </li>
-              <li class="y-step">
-                <p class="font-bold">Arrive and scan</p>
-                <p class="text-sm text-neutral-600">
-                  Show QR on mobile. An attendant will guide you.
-                </p>
-              </li>
-            </ol>
-            <div class="mt-5">
-              <details class="group">
-                <summary
-                  class="y-acc-head px-4 py-3 cursor-pointer flex items-center justify-between"
-                >
-                  <span class="font-bold">What if I am late</span>
-                  <svg
-                    class="w-4 h-4 transition-transform group-open:rotate-180"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M7 10l5 5 5-5" />
-                  </svg>
-                </summary>
-                <div class="y-acc-body px-4 py-3">
-                  <p class="text-sm text-neutral-700">
-                    Grace period is 10 minutes. After that, requeue with staff
-                    assistance.
-                  </p>
+                    ">Review</span>
+                                <div class="flex-1">
+                                    <p class="font-semibold mb-1">Design System Audit</p>
+                                    <p class="text-sm text-gray-600">
+                                        Comprehensive review of existing design implementations
+                                    </p>
+                                </div>
+                                <a href="#" class="text-yBlue text-sm y-miniArrow">Schedule</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content hidden" id="development" role="tabpanel">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <article class="y-card p-4">
+                                <p class="text-xs text-gray-500">Components</p>
+                                <h4 class="font-semibold">UI Library Build</h4>
+                                <p class="text-sm text-gray-600">
+                                    Production ready Tailwind components and tokens
+                                </p>
+                            </article>
+                            <article class="y-card p-4">
+                                <p class="text-xs text-gray-500">Workflow</p>
+                                <h4 class="font-semibold">Design Tokens</h4>
+                                <p class="text-sm text-gray-600">
+                                    Cross platform token pipeline and docs
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="tab-content hidden" id="research" role="tabpanel">
+                        <ul class="space-y-3">
+                            <li class="y-card p-4">
+                                <p class="font-semibold">User Research Sprint</p>
+                                <p class="text-sm text-gray-600">
+                                    5 day research plan with synthesis
+                                </p>
+                            </li>
+                            <li class="y-card p-4">
+                                <p class="font-semibold">Benchmark Study</p>
+                                <p class="text-sm text-gray-600">
+                                    Comparative analysis across JP public portals
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-              </details>
+
+                <aside
+                    class="y-surface rounded-xl p-6 shadow-sm border y-border"
+                    aria-label="Side resources">
+                    <p class="font-semibold mb-4">Quick Downloads</p>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a
+                                class="flex items-center gap-2 hover:underline focus-ring"
+                                href="#"><span class="dot" style="background: #5c8bb9"></span>Design
+                                Guidelines PDF</a>
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-2 hover:underline focus-ring"
+                                href="#"><span class="dot" style="background: #0c8e62"></span>Component Library</a>
+                        </li>
+                        <li>
+                            <a
+                                class="flex items-center gap-2 hover:underline focus-ring"
+                                href="#"><span class="dot" style="background: #e6ba5d"></span>Color
+                                Specifications</a>
+                        </li>
+                    </ul>
+                    <hr class="my-4" />
+                    <p class="font-semibold mb-2">Useful Links</p>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a class="hover:underline focus-ring" href="#">Client Portal</a>
+                        </li>
+                        <li><a class="hover:underline focus-ring" href="#">FAQ</a></li>
+                        <li>
+                            <a class="hover:underline focus-ring" href="#a11y">Accessibility Standards</a>
+                        </li>
+                    </ul>
+                </aside>
             </div>
-          </div>
+        </section>
 
-          <div>
-            <h3 class="y-titleDeco2 text-2xl font-bold mb-4">
-              Ticket Status Legend
-            </h3>
-            <table class="y-table">
-              <thead>
-                <tr>
-                  <th>Status</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="y-chip" style="background: #d1fae5"
-                      >Available</span
-                    >
-                  </td>
-                  <td>Slots can be booked now</td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="y-chip" style="background: #fee2e2"
-                      >Sold out</span
-                    >
-                  </td>
-                  <td>No more capacity for that slot</td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="y-chip" style="background: #e0e7ff"
-                      >Lottery</span
-                    >
-                  </td>
-                  <td>Drawing entries are open</td>
-                </tr>
-                <tr>
-                  <td>
-                    <span class="y-chip" style="background: #fff7ed"
-                      >Pending</span
-                    >
-                  </td>
-                  <td>Check back later for release</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="text-xs text-neutral-500 mt-2">
-              Icons are available as SVG masks in the assets set.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Access -->
-      <section id="access" class="y-surface border-y y-border">
-        <div
-          class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8 items-start"
-        >
-          <div>
-            <h2 class="y-titleDeco1 text-2xl font-bold mb-3">Address</h2>
-            <p class="text-[15px] leading-relaxed">
-              56 Kaguraden, Ogura cho, Uji shi, Kyoto 611 0042
-            </p>
-
-            <h2 class="y-titleDeco2 text-2xl font-bold mt-8 mb-3">Access</h2>
-            <h3 class="font-semibold">From the Train Station</h3>
-            <p class="text-[15px] leading-relaxed mt-1">
-              5 minute walk from the East exit of Ogura Station Kintetsu Kyoto
-              Line<br />
-              8 minute walk from the North exit of JR Ogura Station JR Nara
-              Line<br />
-              6 minute by bus from Uji Station JR Nara Line
-            </p>
-
-            <div class="mt-6 grid grid-cols-2 gap-2 text-sm">
-              <a
-                class="y-arrow hover:underline underline-offset-4"
-                style="color: #2560f0"
-                href="#"
-                target="_blank"
-                >See bus details</a
-              >
-              <a
-                class="y-arrow hover:underline underline-offset-4"
-                style="color: #2560f0"
-                href="#"
-                target="_blank"
-                >Railway operator website</a
-              >
+        <!-- Products Grid -->
+        <section id="products" class="y-surface border-y y-border">
+            <div class="max-w-7xl mx-auto px-4 py-12">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="y-titleDeco2 text-2xl font-bold">Products and Kits</h3>
+                    <div class="flex gap-2">
+                        <button class="y-btn y-btn-ghost">All</button>
+                        <button class="y-btn y-btn-ghost">Tokens</button>
+                        <button class="y-btn y-btn-ghost">Components</button>
+                        <button class="y-btn y-btn-ghost">Patterns</button>
+                    </div>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="y-card p-5">
+                        <h4 class="font-bold">Token Starter</h4>
+                        <p class="text-sm text-neutral-600 mt-1">
+                            Color, spacing, radius and shadows in a cross platform JSON.
+                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <span class="y-chip">JSON</span>
+                            <span class="y-chip">Style Dictionary</span>
+                        </div>
+                        <a
+                            href="#"
+                            class="mt-4 inline-block y-miniArrow"
+                            style="color: #2560f0">Download</a>
+                    </article>
+                    <article class="y-card p-5">
+                        <h4 class="font-bold">Form Controls</h4>
+                        <p class="text-sm text-neutral-600 mt-1">
+                            Input, select, radio, checkbox and validation states.
+                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <span class="y-chip">Tailwind</span>
+                            <span class="y-chip">ARIA</span>
+                        </div>
+                        <a
+                            href="#"
+                            class="mt-4 inline-block y-miniArrow"
+                            style="color: #2560f0">Preview</a>
+                    </article>
+                    <article class="y-card p-5">
+                        <h4 class="font-bold">Navigation Kit</h4>
+                        <p class="text-sm text-neutral-600 mt-1">
+                            Headers, breadcrumbs, side rails and menus.
+                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <span class="y-chip">Responsive</span>
+                            <span class="y-chip">A11y</span>
+                        </div>
+                        <a
+                            href="#"
+                            class="mt-4 inline-block y-miniArrow"
+                            style="color: #2560f0">Docs</a>
+                    </article>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="relative">
-            <div class="y-map rounded-md h-72 md:h-80 w-full"></div>
-            <p class="text-[13px] text-neutral-600 mt-2">
-              Map placeholder. Replace with an embedded map or JS SDK.
-            </p>
-            <div class="absolute -top-3 -left-3 y-chip y-surface">
-              Kyoto Area
+        <!-- Guides -->
+        <section id="guides" class="max-w-7xl mx-auto px-4 py-14">
+            <div id="visit-flow" class="grid lg:grid-cols-2 gap-10 items-start">
+                <div>
+                    <h3 class="y-titleDeco1 text-2xl font-bold mb-4">
+                        From Reservation to Arrival
+                    </h3>
+                    <ol class="y-steps">
+                        <li class="y-step">
+                            <p class="font-bold">Create your account</p>
+                            <p class="text-sm text-neutral-600">
+                                Use email sign in and verify within 10 minutes.
+                            </p>
+                        </li>
+                        <li class="y-step">
+                            <p class="font-bold">Select date and slot</p>
+                            <p class="text-sm text-neutral-600">
+                                Peak days display limited stock indicators.
+                            </p>
+                        </li>
+                        <li class="y-step">
+                            <p class="font-bold">Confirm and pay</p>
+                            <p class="text-sm text-neutral-600">
+                                Credit card only. A receipt is emailed instantly.
+                            </p>
+                        </li>
+                        <li class="y-step">
+                            <p class="font-bold">Arrive and scan</p>
+                            <p class="text-sm text-neutral-600">
+                                Show QR on mobile. An attendant will guide you.
+                            </p>
+                        </li>
+                    </ol>
+                    <div class="mt-5">
+                        <details class="group">
+                            <summary
+                                class="y-acc-head px-4 py-3 cursor-pointer flex items-center justify-between">
+                                <span class="font-bold">What if I am late</span>
+                                <svg
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M7 10l5 5 5-5" />
+                                </svg>
+                            </summary>
+                            <div class="y-acc-body px-4 py-3">
+                                <p class="text-sm text-neutral-700">
+                                    Grace period is 10 minutes. After that, requeue with staff
+                                    assistance.
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="y-titleDeco2 text-2xl font-bold mb-4">
+                        Ticket Status Legend
+                    </h3>
+                    <table class="y-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="y-chip" style="background: #d1fae5">Available</span>
+                                </td>
+                                <td>Slots can be booked now</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="y-chip" style="background: #fee2e2">Sold out</span>
+                                </td>
+                                <td>No more capacity for that slot</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="y-chip" style="background: #e0e7ff">Lottery</span>
+                                </td>
+                                <td>Drawing entries are open</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="y-chip" style="background: #fff7ed">Pending</span>
+                                </td>
+                                <td>Check back later for release</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-xs text-neutral-500 mt-2">
+                        Icons are available as SVG masks in the assets set.
+                    </p>
+                </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Tokens -->
-      <section id="tokens" class="max-w-7xl mx-auto px-4 py-12">
-        <h3 class="y-titleDeco1 text-2xl font-bold mb-4">Quick Tokens</h3>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="y-card p-4">
-            <p class="text-xs text-neutral-500">Primary</p>
-            <div class="h-10 rounded-md mt-2" style="background: #2560f0"></div>
-            <code class="text-xs">--color-primary: #2560f0</code>
-          </div>
-          <div class="y-card p-4">
-            <p class="text-xs text-neutral-500">Accent</p>
-            <div class="h-10 rounded-md mt-2" style="background: #e70012"></div>
-            <code class="text-xs">--color-accent: #e70012</code>
-          </div>
-          <div class="y-card p-4">
-            <p class="text-xs text-neutral-500">Surface</p>
+        <!-- Access -->
+        <section id="access" class="y-surface border-y y-border">
             <div
-              class="h-10 rounded-md mt-2 y-surface border-2 border-yBlack"
-            ></div>
-            <code class="text-xs">--color-surface: #ffffff</code>
-          </div>
-          <div class="y-card p-4">
-            <p class="text-xs text-neutral-500">Radius</p>
-            <div class="mt-2 flex gap-2">
-              <span class="y-chip">8px</span><span class="y-chip">12px</span
-              ><span class="y-chip">14px</span>
-            </div>
-          </div>
-        </div>
-      </section>
+                class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h2 class="y-titleDeco1 text-2xl font-bold mb-3">Address</h2>
+                    <p class="text-[15px] leading-relaxed">
+                        56 Kaguraden, Ogura cho, Uji shi, Kyoto 611 0042
+                    </p>
 
-      <!-- Reserve -->
-      <section id="reserve" class="bg-gradient-to-b from-white to-[#dbe7f6]">
-        <div class="max-w-7xl mx-auto px-4 py-16">
-          <div
-            class="y-surface rounded-2xl p-8 shadow-sm max-w-5xl mx-auto border y-border relative overflow-hidden"
-          >
-            <div class="grid lg:grid-cols-2 gap-8 relative">
-              <div>
-                <p
-                  class="section-label text-xs"
-                  style="
+                    <h2 class="y-titleDeco2 text-2xl font-bold mt-8 mb-3">Access</h2>
+                    <h3 class="font-semibold">From the Train Station</h3>
+                    <p class="text-[15px] leading-relaxed mt-1">
+                        5 minute walk from the East exit of Ogura Station Kintetsu Kyoto
+                        Line<br />
+                        8 minute walk from the North exit of JR Ogura Station JR Nara
+                        Line<br />
+                        6 minute by bus from Uji Station JR Nara Line
+                    </p>
+
+                    <div class="mt-6 grid grid-cols-2 gap-2 text-sm">
+                        <a
+                            class="y-arrow hover:underline underline-offset-4"
+                            style="color: #2560f0"
+                            href="#"
+                            target="_blank">See bus details</a>
+                        <a
+                            class="y-arrow hover:underline underline-offset-4"
+                            style="color: #2560f0"
+                            href="#"
+                            target="_blank">Railway operator website</a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="y-map rounded-md h-72 md:h-80 w-full"></div>
+                    <p class="text-[13px] text-neutral-600 mt-2">
+                        Map placeholder. Replace with an embedded map or JS SDK.
+                    </p>
+                    <div class="absolute -top-3 -left-3 y-chip y-surface">
+                        Kyoto Area
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tokens -->
+        <section id="tokens" class="max-w-7xl mx-auto px-4 py-12">
+            <h3 class="y-titleDeco1 text-2xl font-bold mb-4">Quick Tokens</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="y-card p-4">
+                    <p class="text-xs text-neutral-500">Primary</p>
+                    <div class="h-10 rounded-md mt-2" style="background: #2560f0"></div>
+                    <code class="text-xs">--color-primary: #2560f0</code>
+                </div>
+                <div class="y-card p-4">
+                    <p class="text-xs text-neutral-500">Accent</p>
+                    <div class="h-10 rounded-md mt-2" style="background: #e70012"></div>
+                    <code class="text-xs">--color-accent: #e70012</code>
+                </div>
+                <div class="y-card p-4">
+                    <p class="text-xs text-neutral-500">Surface</p>
+                    <div
+                        class="h-10 rounded-md mt-2 y-surface border-2 border-yBlack"></div>
+                    <code class="text-xs">--color-surface: #ffffff</code>
+                </div>
+                <div class="y-card p-4">
+                    <p class="text-xs text-neutral-500">Radius</p>
+                    <div class="mt-2 flex gap-2">
+                        <span class="y-chip">8px</span><span class="y-chip">12px</span><span class="y-chip">14px</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reserve -->
+        <section id="reserve" class="bg-gradient-to-b from-white to-[#dbe7f6]">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <div
+                    class="y-surface rounded-2xl p-8 shadow-sm max-w-5xl mx-auto border y-border relative overflow-hidden">
+                    <div class="grid lg:grid-cols-2 gap-8 relative">
+                        <div>
+                            <p
+                                class="section-label text-xs"
+                                style="
                     color: #5c8bb9;
                     font-weight: 500;
                     letter-spacing: 0.12em;
-                  "
-                >
-                  Reservation
-                </p>
-                <h4 class="text-2xl font-bold mb-4">Schedule a Session</h4>
-                <p class="text-gray-600 mb-6">
-                  Book a consultation session with our design experts. Select
-                  your preferred date, time, and session type.
-                </p>
-                <img
-                  alt="Design consultation"
-                  class="rounded-xl"
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&auto=format"
-                />
-                <div class="mt-4 text-sm text-neutral-600">
-                  <p><span class="font-bold">Ticket Availability</span></p>
-                  <ul class="mt-2 grid grid-cols-2 gap-2">
-                    <li class="flex items-center gap-2">
-                      <span
-                        class="w-3 h-3 rounded-full bg-emerald-400 border border-yBlack"
-                      ></span
-                      >September open
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <span
-                        class="w-3 h-3 rounded-full bg-red-300 border border-yBlack"
-                      ></span
-                      >Some slots sold out
-                    </li>
-                  </ul>
+                  ">
+                                Reservation
+                            </p>
+                            <h4 class="text-2xl font-bold mb-4">Schedule a Session</h4>
+                            <p class="text-gray-600 mb-6">
+                                Book a consultation session with our design experts. Select
+                                your preferred date, time, and session type.
+                            </p>
+                            <img
+                                alt="Design consultation"
+                                class="rounded-xl"
+                                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&auto=format" />
+                            <div class="mt-4 text-sm text-neutral-600">
+                                <p><span class="font-bold">Ticket Availability</span></p>
+                                <ul class="mt-2 grid grid-cols-2 gap-2">
+                                    <li class="flex items-center gap-2">
+                                        <span
+                                            class="w-3 h-3 rounded-full bg-emerald-400 border border-yBlack"></span>September open
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <span
+                                            class="w-3 h-3 rounded-full bg-red-300 border border-yBlack"></span>Some slots sold out
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form class="space-y-4" id="reserveForm">
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <label class="text-sm">Date<input
+                                        type="date"
+                                        class="mt-1 w-full border rounded px-3 py-2"
+                                        required /></label>
+                                <label class="text-sm">Time<select
+                                        class="mt-1 w-full border rounded px-3 py-2"
+                                        required>
+                                        <option>10:00</option>
+                                        <option>14:00</option>
+                                        <option>16:00</option>
+                                    </select></label>
+                                <label class="text-sm">Duration<select
+                                        class="mt-1 w-full border rounded px-3 py-2"
+                                        required>
+                                        <option>1 hour</option>
+                                        <option>2 hours</option>
+                                        <option>Half day</option>
+                                    </select></label>
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <label class="text-sm">Name<input
+                                        placeholder="Your name"
+                                        class="mt-1 w-full border rounded px-3 py-2"
+                                        required /></label>
+                                <label class="text-sm">Email<input
+                                        type="email"
+                                        placeholder="your@email.com"
+                                        class="mt-1 w-full border rounded px-3 py-2"
+                                        required /></label>
+                            </div>
+                            <label class="text-sm">Session Type<select
+                                    class="mt-1 w-full border rounded px-3 py-2">
+                                    <option>Design System Consultation</option>
+                                    <option>UI and UX Review</option>
+                                    <option>Team Workshop</option>
+                                    <option>Technical Implementation</option>
+                                </select></label>
+                            <label class="flex items-center gap-2 text-sm"><input id="agree" type="checkbox" required /> I agree to the
+                                terms and conditions</label>
+                            <div class="flex flex-wrap gap-3">
+                                <button
+                                    type="button"
+                                    id="checkBtn"
+                                    class="y-btn y-btn-accent">
+                                    Check Availability
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
-              <form class="space-y-4" id="reserveForm">
-                <div class="grid sm:grid-cols-3 gap-3">
-                  <label class="text-sm"
-                    >Date<input
-                      type="date"
-                      class="mt-1 w-full border rounded px-3 py-2"
-                      required
-                  /></label>
-                  <label class="text-sm"
-                    >Time<select
-                      class="mt-1 w-full border rounded px-3 py-2"
-                      required
-                    >
-                      <option>10:00</option>
-                      <option>14:00</option>
-                      <option>16:00</option>
-                    </select></label
-                  >
-                  <label class="text-sm"
-                    >Duration<select
-                      class="mt-1 w-full border rounded px-3 py-2"
-                      required
-                    >
-                      <option>1 hour</option>
-                      <option>2 hours</option>
-                      <option>Half day</option>
-                    </select></label
-                  >
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="y-surface border-t y-border">
+            <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
+                <!-- Marque -->
+                <div>
+                    <a href="#hero" class="inline-flex items-center gap-2">
+                        <span
+                            class="inline-block w-8 h-8 rounded-full border-2 border-yBlack grid place-items-center">
+                            <span class="block w-4 h-4 bg-yBlack"></span>
+                        </span>
+                        <span class="font-extrabold tracking-tight">Yugen</span>
+                    </a>
+                    <p class="text-sm text-neutral-600 mt-3">
+                        Precision, visual hierarchy, information density, and
+                        micro-details inspired by Japanese public portals.
+                    </p>
+                    <span class="y-stamp mt-4">YDS</span>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-3">
-                  <label class="text-sm"
-                    >Name<input
-                      placeholder="Your name"
-                      class="mt-1 w-full border rounded px-3 py-2"
-                      required
-                  /></label>
-                  <label class="text-sm"
-                    >Email<input
-                      type="email"
-                      placeholder="your@email.com"
-                      class="mt-1 w-full border rounded px-3 py-2"
-                      required
-                  /></label>
+
+                <!-- Navigation -->
+                <nav
+                    aria-label="Pied de page"
+                    class="grid sm:grid-cols-2 gap-6 md:col-span-2">
+                    <div>
+                        <p class="font-bold mb-3 y-titleDeco1">Products</p>
+                        <ul class="space-y-2 text-sm">
+                            <li>
+                                <a class="hover:underline" href="#products">Kits and tokens</a>
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#guides">Guides and patterns</a>
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#services">Services</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-bold mb-3 y-titleDeco2">Ressources</p>
+                        <ul class="space-y-2 text-sm">
+                            <li>
+                                <a class="hover:underline" href="#a11y">Accessibility</a>
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#tokens">Quick Tokens</a>
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="#reserve">Schedule a Session</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Contact -->
+                <div>
+                    <p class="font-bold mb-3 y-titleDeco1">Contact</p>
+                    <p class="text-sm leading-relaxed">
+                        56 Kaguraden, Ogura cho<br />Uji shi, Kyoto 611 0042
+                    </p>
+                    <a
+                        href="#access"
+                        class="mt-3 inline-block y-arrow hover:underline underline-offset-4"
+                        style="color: #2560f0">
+                        Access and map
+                    </a>
+                    <div class="mt-4 flex items-center gap-2">
+                        <button class="y-btn y-btn-line text-sm" id="backToTop">
+                            Back to top
+                        </button>
+                    </div>
                 </div>
-                <label class="text-sm"
-                  >Session Type<select
-                    class="mt-1 w-full border rounded px-3 py-2"
-                  >
-                    <option>Design System Consultation</option>
-                    <option>UI and UX Review</option>
-                    <option>Team Workshop</option>
-                    <option>Technical Implementation</option>
-                  </select></label
-                >
-                <label class="flex items-center gap-2 text-sm"
-                  ><input id="agree" type="checkbox" required /> I agree to the
-                  terms and conditions</label
-                >
-                <div class="flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    id="checkBtn"
-                    class="y-btn y-btn-accent"
-                  >
-                    Check Availability
-                  </button>
+            </div>
+
+            <!-- Bande décorative -->
+            <div class="y-seigaiha border-t y-border">
+                <div
+                    class="max-w-7xl mx-auto px-4 py-3 text-xs flex flex-wrap items-center gap-3 justify-between">
+                    <p class="text-neutral-600">
+                        © <span id="yYear"></span> Yugen Design System. Tous droits
+                        réservés.
+                    </p>
+                    <ul class="flex items-center gap-4">
+                        <li><a href="#" class="hover:underline">Conditions</a></li>
+                        <li><a href="#" class="hover:underline">Confidentialité</a></li>
+                        <li><a href="#" class="hover:underline">Cookies</a></li>
+                    </ul>
                 </div>
-              </form>
             </div>
-          </div>
-        </div>
-      </section>
+        </footer>
 
-      <!-- Footer -->
-      <footer class="y-surface border-t y-border">
-        <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-8">
-          <!-- Marque -->
-          <div>
-            <a href="#hero" class="inline-flex items-center gap-2">
-              <span
-                class="inline-block w-8 h-8 rounded-full border-2 border-yBlack grid place-items-center"
-              >
-                <span class="block w-4 h-4 bg-yBlack"></span>
-              </span>
-              <span class="font-extrabold tracking-tight">Yugen</span>
-            </a>
-            <p class="text-sm text-neutral-600 mt-3">
-              Precision, visual hierarchy, information density, and
-              micro-details inspired by Japanese public portals.
-            </p>
-            <span class="y-stamp mt-4">YDS</span>
-          </div>
+        <!-- Script footer -->
+        <script>
+            // Année dynamique
+            const yYearEl = document.getElementById("yYear");
+            if (yYearEl) yYearEl.textContent = new Date().getFullYear();
 
-          <!-- Navigation -->
-          <nav
-            aria-label="Pied de page"
-            class="grid sm:grid-cols-2 gap-6 md:col-span-2"
-          >
-            <div>
-              <p class="font-bold mb-3 y-titleDeco1">Produits</p>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a class="hover:underline" href="#products"
-                    >Kits and tokens</a
-                  >
-                </li>
-                <li>
-                  <a class="hover:underline" href="#guides"
-                    >Guides and patterns</a
-                  >
-                </li>
-                <li>
-                  <a class="hover:underline" href="#services">Services</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p class="font-bold mb-3 y-titleDeco2">Ressources</p>
-              <ul class="space-y-2 text-sm">
-                <li>
-                  <a class="hover:underline" href="#a11y">Accessibility</a>
-                </li>
-                <li>
-                  <a class="hover:underline" href="#tokens">Quick Tokens</a>
-                </li>
-                <li>
-                  <a class="hover:underline" href="#reserve"
-                    >Schedule a Session</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </nav>
-
-          <!-- Contact -->
-          <div>
-            <p class="font-bold mb-3 y-titleDeco1">Contact</p>
-            <p class="text-sm leading-relaxed">
-              56 Kaguraden, Ogura cho<br />Uji shi, Kyoto 611 0042
-            </p>
-            <a
-              href="#access"
-              class="mt-3 inline-block y-arrow hover:underline underline-offset-4"
-              style="color: #2560f0"
-            >
-              Access and map
-            </a>
-            <div class="mt-4 flex items-center gap-2">
-              <button class="y-btn y-btn-line text-sm" id="backToTop">
-                Back to top
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bande décorative -->
-        <div class="y-seigaiha border-t y-border">
-          <div
-            class="max-w-7xl mx-auto px-4 py-3 text-xs flex flex-wrap items-center gap-3 justify-between"
-          >
-            <p class="text-neutral-600">
-              © <span id="yYear"></span> Yugen Design System. Tous droits
-              réservés.
-            </p>
-            <ul class="flex items-center gap-4">
-              <li><a href="#" class="hover:underline">Conditions</a></li>
-              <li><a href="#" class="hover:underline">Confidentialité</a></li>
-              <li><a href="#" class="hover:underline">Cookies</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
-
-      <!-- Script footer -->
-      <script>
-        // Année dynamique
-        const yYearEl = document.getElementById("yYear");
-        if (yYearEl) yYearEl.textContent = new Date().getFullYear();
-
-        // Retour en haut
-        const backBtn = document.getElementById("backToTop");
-        if (backBtn)
-          backBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          });
-      </script>
+            // Retour en haut
+            const backBtn = document.getElementById("backToTop");
+            if (backBtn)
+                backBtn.addEventListener("click", () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                });
+        </script>
     </main>
 
     <!-- Dialog Tickets -->
     <dialog
-      id="ticketDialog"
-      class="rounded-xl p-0 w-11/12 max-w-lg y-surface border y-border"
-    >
-      <div class="p-4 border-b y-border flex items-center justify-between">
-        <h5 class="font-bold">Reserve Tickets</h5>
-        <button id="closeDialog" class="y-btn y-btn-ghost px-3 py-1">
-          Close
-        </button>
-      </div>
-      <div class="p-4 space-y-3">
-        <label class="text-sm"
-          >Quantity<select class="mt-1 w-full border rounded px-3 py-2">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-          </select></label
-        >
-        <button class="y-btn y-btn-primary w-full">Continue</button>
-      </div>
+        id="ticketDialog"
+        class="rounded-xl p-0 w-11/12 max-w-lg y-surface border y-border">
+        <div class="p-4 border-b y-border flex items-center justify-between">
+            <h5 class="font-bold">Reserve Tickets</h5>
+            <button id="closeDialog" class="y-btn y-btn-ghost px-3 py-1">
+                Close
+            </button>
+        </div>
+        <div class="p-4 space-y-3">
+            <label class="text-sm">Quantity<select class="mt-1 w-full border rounded px-3 py-2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select></label>
+            <button class="y-btn y-btn-primary w-full">Continue</button>
+        </div>
     </dialog>
 
     <script>
-      // Mobile menu
-      const menuBtn = document.getElementById("yMenuBtn");
-      const menu = document.getElementById("yMenu");
-      if (menuBtn && menu) {
-        menuBtn.addEventListener("click", () => {
-          const open = menu.classList.toggle("hidden") === false;
-          menuBtn.setAttribute("aria-expanded", String(open));
-        });
-      }
+        // Mobile menu
+        const menuBtn = document.getElementById("yMenuBtn");
+        const menu = document.getElementById("yMenu");
+        if (menuBtn && menu) {
+            menuBtn.addEventListener("click", () => {
+                const open = menu.classList.toggle("hidden") === false;
+                menuBtn.setAttribute("aria-expanded", String(open));
+            });
+        }
 
-      // Font size controls
-      const html = document.documentElement;
-      const baseSize = 16;
-      const btnMinus = document.getElementById("a-");
-      const btnBase = document.getElementById("a0");
-      const btnPlus = document.getElementById("a+");
-      function setFs(px) {
-        html.style.fontSize = px + "px";
-      }
-      if (btnMinus)
-        btnMinus.onclick = () =>
-          setFs(
-            Math.max(
-              14,
-              (parseFloat(getComputedStyle(html).fontSize) || baseSize) - 1
-            )
-          );
-      if (btnBase) btnBase.onclick = () => setFs(baseSize);
-      if (btnPlus)
-        btnPlus.onclick = () =>
-          setFs(
-            Math.min(
-              20,
-              (parseFloat(getComputedStyle(html).fontSize) || baseSize) + 1
-            )
-          );
+        // Font size controls
+        const html = document.documentElement;
+        const baseSize = 16;
+        const btnMinus = document.getElementById("a-");
+        const btnBase = document.getElementById("a0");
+        const btnPlus = document.getElementById("a+");
 
-      // Theme toggle (light/dark via CSS vars)
-      const themeToggle = document.getElementById("themeToggle");
-      function applyTheme(dark) {
-        document.body.classList.toggle("theme-dark", dark);
-        themeToggle.textContent = dark ? "Dark" : "Light";
-        themeToggle.setAttribute("aria-pressed", String(dark));
-      }
-      if (themeToggle)
-        themeToggle.addEventListener("click", () => {
-          const dark = !document.body.classList.contains("theme-dark");
-          applyTheme(dark);
-        });
+        function setFs(px) {
+            html.style.fontSize = px + "px";
+        }
+        if (btnMinus)
+            btnMinus.onclick = () =>
+            setFs(
+                Math.max(
+                    14,
+                    (parseFloat(getComputedStyle(html).fontSize) || baseSize) - 1
+                )
+            );
+        if (btnBase) btnBase.onclick = () => setFs(baseSize);
+        if (btnPlus)
+            btnPlus.onclick = () =>
+            setFs(
+                Math.min(
+                    20,
+                    (parseFloat(getComputedStyle(html).fontSize) || baseSize) + 1
+                )
+            );
 
-      // Tabs
-      const tabs = document.querySelectorAll(".tab-btn");
-      const panels = document.querySelectorAll(".tab-content");
-      tabs.forEach((btn) =>
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-tab");
-          tabs.forEach((b) => {
-            b.classList.remove("active");
-            b.setAttribute("aria-selected", "false");
-          });
-          btn.classList.add("active");
-          btn.setAttribute("aria-selected", "true");
-          panels.forEach((p) => p.classList.toggle("hidden", p.id !== id));
-        })
-      );
+        // Theme toggle (light/dark via CSS vars)
+        const themeToggle = document.getElementById("themeToggle");
 
-      // Dialog tickets
-      const dlg = document.getElementById("ticketDialog");
-      const open1 = document.getElementById("openTickets");
-      const open2 = document.getElementById("openTicketsMobile");
-      const close = document.getElementById("closeDialog");
-      function openDlg() {
-        if (typeof dlg.showModal === "function") dlg.showModal();
-        else alert("Dialog not supported");
-      }
-      if (open1) open1.onclick = openDlg;
-      if (open2) open2.onclick = openDlg;
-      if (close) close.onclick = () => dlg.close();
+        function applyTheme(dark) {
+            document.body.classList.toggle("theme-dark", dark);
+            themeToggle.textContent = dark ? "Dark" : "Light";
+            themeToggle.setAttribute("aria-pressed", String(dark));
+        }
+        if (themeToggle)
+            themeToggle.addEventListener("click", () => {
+                const dark = !document.body.classList.contains("theme-dark");
+                applyTheme(dark);
+            });
 
-      // Form demo
-      const checkBtn = document.getElementById("checkBtn");
-      const form = document.getElementById("reserveForm");
-      if (checkBtn && form)
-        checkBtn.addEventListener("click", () => {
-          if (!form.reportValidity()) return;
-          alert("Slots available for your selection");
-        });
+        // Tabs
+        const tabs = document.querySelectorAll(".tab-btn");
+        const panels = document.querySelectorAll(".tab-content");
+        tabs.forEach((btn) =>
+            btn.addEventListener("click", () => {
+                const id = btn.getAttribute("data-tab");
+                tabs.forEach((b) => {
+                    b.classList.remove("active");
+                    b.setAttribute("aria-selected", "false");
+                });
+                btn.classList.add("active");
+                btn.setAttribute("aria-selected", "true");
+                panels.forEach((p) => p.classList.toggle("hidden", p.id !== id));
+            })
+        );
+
+        // Dialog tickets
+        const dlg = document.getElementById("ticketDialog");
+        const open1 = document.getElementById("openTickets");
+        const open2 = document.getElementById("openTicketsMobile");
+        const close = document.getElementById("closeDialog");
+
+        function openDlg() {
+            if (typeof dlg.showModal === "function") dlg.showModal();
+            else alert("Dialog not supported");
+        }
+        if (open1) open1.onclick = openDlg;
+        if (open2) open2.onclick = openDlg;
+        if (close) close.onclick = () => dlg.close();
+
+        // Form demo
+        const checkBtn = document.getElementById("checkBtn");
+        const form = document.getElementById("reserveForm");
+        if (checkBtn && form)
+            checkBtn.addEventListener("click", () => {
+                if (!form.reportValidity()) return;
+                alert("Slots available for your selection");
+            });
     </script>
-  </body>
+</body>
+
 </html>
